@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre JoJo</title>
+
+<style>
+/* =========================== */
+/* CONFIGURAÇÃO DO BODY        */
+/* =========================== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #00FFFF;
+  text-align: justify;
+
+  /* Camada 1: CONSTELLATIONS (fixa, no topo)
+     Camada 2: GenerationalBizarreness (vertical infinito)
+  */
+  background-image:
+    url("CONSTELLATIONS.png"),
+    url("GenerationalBizarreness.jpg");
+
+  background-size:
+    contain,        /* CONSTELLATIONS */
+    100% auto;      /* fundo vertical */
+
+  background-repeat:
+    no-repeat,      /* CONSTELLATIONS */
+    repeat-y;       /* fundo vertical */
+
+  background-attachment:
+    fixed,          /* CONSTELLATIONS */
+    scroll;         /* fundo vertical */
+
+  background-position:
+    top center,
+    top center;
+}
+
+/* =========================== */
+/* BOTÕES                      */
+/* =========================== */
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position: relative;
+  z-index: 10; /* Mantém os botões acima do overlay */
+}
+
+.button1 { background-color: #CC00C0; color: yellow; border: 2px solid #D3D3D3; }
+.button1:hover { background-color: #FFFF00; color: blue; border: 2px solid #FF4500; }
+
+.button2 { background-color: red; color: #8B008B; border: 2px solid #DEB887; }
+.button2:hover { background-color: #FFFF00; color: #00BF00; border: 2px solid #9400D3; }
+
+.button3 { background-color: #F8C54B; color: green; border: 2px solid #D3D3D3; }
+.button3:hover { background-color: #FF00FF; color: black; border: 2px solid #FFD700; }
+
+.button4 { background-color: #FFC0CB; color: Yellow; border: 4px solid #9932CC; }
+.button4:hover { background-color: #D1EEF0; color: #3B4369; border: 4px solid #F2B9C5; }
+
+.button5 { background-color: #FF0000; color: pink; border: 2px solid #D3D3D3; }
+.button5:hover { background-color: #FFF39F; color: #FF69B4; border: 2px solid #FF813B; }
+
+.button6 { background-color: #000000; color: #CCCC00; border: 6px solid white; }
+.button6:hover { background-color: #2CC4EA; color: #7FFF00; border: 0px solid red; }
+
+.button7 { background-color: #b493ff; color: red; border: 2px solid pink; }
+.button7:hover { background-color: #ff70c8; color: #BFE7FF; border: 2px solid yellow; }
+
+.button8 { background-color: #8B0000; color: purple; border: 2px solid #FFFF00; }
+.button8:hover { background-color: #89CFEF; color: white; border: 2px solid blue; }
+
+.button9 { background-color: #32CD32; color: gray; border: 2px solid white; }
+.button9:hover { background-color: white; color: #DCDCDC; border: 2px solid #0000CD; }
+
+.button10 { background-color: #000000; color: blue; border: 2px solid red; }
+.button10:hover { background-color: #CC00CC; color: black; border: 2px wavy red; }
+
+/* =========================== */
+/* TIME STOP EFFECT            */
+/* =========================== */
+.timestop-freeze {
+  filter: grayscale(100%) brightness(40%);
+  pointer-events: none;
+  transition: filter 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Vibração Pucci */
+.vibrate {
+  animation: vibrar 0.15s infinite linear;
+}
+
+@keyframes vibrar {
+  0% { transform: translate(1px, 1px); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+/* Overlay */
+.timestop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.85);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 5;
+}
+
+
+.timestop-active {
+  opacity: 1;
+}
+
+.texto01 {
+      font-family: "Times New Roman", serif;
+    }
+
+/* =========================== */
+/* IMAGENS                     */
+/* =========================== */
+.JOJO-img {
+  float: right;
+  max-width: 45%;
+  height: auto;
+  border: 5px solid #FFD700;
+  border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="timestop-overlay" id="timestop"></div>
+
+<div class="row">
+<a href="O Sangue Fantasma.html" class="button button1">Parte 1: Phantom Blood</a>
+<a href="A Tendência De Batalha.html" class="button button2">Parte 2: Battle Tendency</a>
+<a href="Os Cruzados Do Pó Estelar.html" class="button button3">Parte 3: Stardust Crusaders</a>
+<a href="O Diamante É Inquebrável.html" class="button button4">Parte 4: Diamond Is Unbreakable</a>
+<a href="O Vento Dourado.html" class="button button5">Parte 5: Vento Aureo</a>
+<a href="O Oceano De Pedra.html" class="button button6">Parte 6: Stone Ocean</a>
+<a href="A Corrida Da Bola De Aço.html" class="button button7">Parte 7: Steel Ball Run</a>
+<a href="O JoJo Leão.html" class="button button8">Parte 8: JoJolion</a>
+<a href="As JoJo Terras.html" class="button button9">Parte 9: JoJolands</a>
+</div>
+
+<script>
+const button3 = document.querySelector(".button3");
+const button6 = document.querySelector(".button6");
+const overlay = document.getElementById("timestop");
+const allButtons = document.querySelectorAll(".button");
+
+button3.addEventListener("mouseenter", () => {
+  overlay.classList.add("timestop-active");
+  allButtons.forEach(btn => {
+    if (btn !== button3 && btn !== button6) {
+      btn.classList.add("timestop-freeze");
+    }
+  });
+
+  button6.classList.add("vibrate");
+});
+
+button3.addEventListener("mouseleave", () => {
+  overlay.classList.remove("timestop-active");
+  allButtons.forEach(btn => {
+    btn.classList.remove("timestop-freeze");
+  });
+
+  button6.classList.remove("vibrate");
+});
+</script>
+
+
+<img class="JOJO-img" src="Aventureiros Bizarros.jpg" alt="Todas as Estrelas">
+
+Olá. Está pronto para uma bizarra aventura? 
+<div class="texto01"> 
+Então vamos entrar juntos nessa e explorar a jornada estrelar da linhagem Joestar da Parte 1 até a Parte 9: Descobrindo mistérios supernaturais do Sangue Fantasma, encontrando seres supremos com Tendência de Batalha, chutando areia nos olhos dos pobres com os Cruzados do Pó Estelar, admirando um lindo Duwang como um Diamante Inquebrável, testemunhando o ouro lutador se manifestar contra a corrupção do seu Vento Dourado, honrando sua linhagem até o universo virar do avesso junto do livre Oceano de Pedra, calçar suas botas de sertanejo para encontrar Jesus Cristo na recentemente adaptada Corrida da Bola de Aço, escutar Elvis Presley pela primeira vez(escutem Elvis, seus Nutella) para se reinventar com o sortudo inimigo do JoJo Leão, e acompanhe a nova parte de JoJo's Bizarre Adventure seguindo um Giorno brisadasso nas JoJo Terras. 
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

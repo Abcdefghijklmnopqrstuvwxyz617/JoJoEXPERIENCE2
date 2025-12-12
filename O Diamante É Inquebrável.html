@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamante É Inquebrável</title>
+
+<style>
+/* =========================== */
+/* CONFIGURAÇÃO DO BODY        */
+/* =========================== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #FFC0CB;
+  text-align: justify;
+
+  /* FUNDO AUTOMÁTICO VERTICAL */
+  background-image: url("DiamondIsNotCrash.jpg");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: top center;
+  background-attachment: scroll;
+}
+
+/* =========================== */
+/* BOTÕES                      */
+/* =========================== */
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position: relative;
+  z-index: 10; /* Mantém os botões acima do overlay */
+}
+
+.button1 { background-color: #CC00C0; color: yellow; border: 2px solid #D3D3D3; }
+.button1:hover { background-color: #FFFF00; color: blue; border: 2px solid #FF4500; }
+
+.button2 { background-color: red; color: #8B008B; border: 2px solid #DEB887; }
+.button2:hover { background-color: #FFFF00; color: #00BF00; border: 2px solid #9400D3; }
+
+.button3 { background-color: #F8C54B; color: green; border: 2px solid #D3D3D3; }
+.button3:hover { background-color: #FF00FF; color: black; border: 2px solid #FFD700; }
+
+.button4 { background-color: #FFC0CB; color: Yellow; border: 4px solid #9932CC; }
+.button4:hover { background-color: #D1EEF0; color: #3B4369; border: 4px solid #F2B9C5; }
+
+.button5 { background-color: #FF0000; color: pink; border: 2px solid #D3D3D3; }
+.button5:hover { background-color: #FFF39F; color: #FF69B4; border: 2px solid #FF813B; }
+
+.button6 { background-color: #000000; color: #CCCC00; border: 6px solid white; }
+.button6:hover { background-color: #2CC4EA; color: #7FFF00; border: 0px solid red; }
+
+.button7 { background-color: #b493ff; color: red; border: 2px solid pink; }
+.button7:hover { background-color: #ff70c8; color: #BFE7FF; border: 2px solid yellow; }
+
+.button8 { background-color: #8B0000; color: purple; border: 2px solid #FFFF00; }
+.button8:hover { background-color: #89CFEF; color: white; border: 2px solid blue; }
+
+.button9 { background-color: #32CD32; color: gray; border: 2px solid white; }
+.button9:hover { background-color: white; color: #DCDCDC; border: 2px solid #0000CD; }
+
+.button10 { background-color: #000000; color: blue; border: 2px solid red; }
+.button10:hover { background-color: #CC00CC; color: black; border: 2px wavy red; }
+
+/* =========================== */
+/* TIME STOP EFFECT            */
+/* =========================== */
+.timestop-freeze {
+  filter: grayscale(100%) brightness(40%);
+  pointer-events: none;
+  transition: filter 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Vibração Pucci */
+.vibrate {
+  animation: vibrar 0.15s infinite linear;
+}
+
+@keyframes vibrar {
+  0% { transform: translate(1px, 1px); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+/* Overlay */
+.timestop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.85);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.timestop-active {
+  opacity: 1;
+}
+
+.texto01 {
+      font-family: "Times New Roman", serif;
+    }
+
+/* =========================== */
+/* IMAGENS                     */
+/* =========================== */
+.JOJO-img {
+  float: right;
+  max-width: 45%;
+  height: auto;
+  border: 5px solid #FFD700;
+  border-radius: 8px;
+  margin-left: 20px; /* afastar o texto */
+  margin-bottom: 10px; /* opcional */
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="timestop-overlay" id="timestop"></div>
+
+<div class="row">
+<a href="O Sangue Fantasma.html" class="button button1">Parte 1: Phantom Blood</a>
+<a href="A Tendência De Batalha.html" class="button button2">Parte 2: Battle Tendency</a>
+<a href="Os Cruzados Do Pó Estelar.html" class="button button3">Parte 3: Stardust Crusaders</a>
+<a href="O Diamante É Inquebrável.html" class="button button4">Parte 4: Diamond Is Unbreakable</a>
+<a href="O Vento Dourado.html" class="button button5">Parte 5: Vento Aureo</a>
+<a href="O Oceano De Pedra.html" class="button button6">Parte 6: Stone Ocean</a>
+<a href="A Corrida Da Bola De Aço.html" class="button button7">Parte 7: Steel Ball Run</a>
+<a href="O JoJo Leão.html" class="button button8">Parte 8: JoJolion</a>
+<a href="As JoJo Terras.html" class="button button9">Parte 9: JoJolands</a>
+</div>
+
+<script>
+const button3 = document.querySelector(".button3");
+const button6 = document.querySelector(".button6");
+const overlay = document.getElementById("timestop");
+const allButtons = document.querySelectorAll(".button");
+
+button3.addEventListener("mouseenter", () => {
+  overlay.classList.add("timestop-active");
+  allButtons.forEach(btn => {
+    if (btn !== button3 && btn !== button6) {
+      btn.classList.add("timestop-freeze");
+    }
+  });
+
+  button6.classList.add("vibrate");
+});
+
+button3.addEventListener("mouseleave", () => {
+  overlay.classList.remove("timestop-active");
+  allButtons.forEach(btn => {
+    btn.classList.remove("timestop-freeze");
+  });
+
+  button6.classList.remove("vibrate");
+});
+</script>
+<p>
+<img class="JOJO-img" src="ThePunks.jpg" alt="BREAKDOWN BREAKDOWN">
+</p>
+<div class="texto01">
+BEM-VINDO A MORIOH
+Artigo principal: Jotaro Kujo! Conhece Josuke Higashikata (arco de história)
+Artigo principal: Josuke Higashikata! Conhece Anjuro (arco de história)
+
+Josuke e Jotaro se encontram
+Um Jotaro Kujo mais velho viaja para a costa de Morioh , no Japão, para conhecer o calouro do ensino médio Josuke Higashikata , que por acaso é filho ilegítimo de Joseph Joestar .
+
+Assim que Josuke revela seu Stand , Crazy Diamond , Jotaro compartilha a notícia de uma ameaça paranormal em Morioh, revelando que um assassino usuário de Stand chamado Anjuro Katagiri está à solta em Morioh. O assassino mira em Josuke com seu novo Stand, Aqua Necklace, por este ter frustrado um roubo. Após Anjuro matar o avô de Josuke , Ryohei , Josuke promete assumir seu papel como protetor de Morioh.
+
+Mais tarde, Josuke e Jotaro são atacados dentro da casa de Josuke pelo Colar de Água. Josuke consegue prendê-lo dentro de uma luva de borracha e funde Anjuro a uma pedra. Anjuro revela que adquiriu seu Stand quando um homem usou um arco e flecha nele. Frustrando uma última tentativa de fazer uma criança refém, Josuke finalmente funde Anjuro à sua pedra.
+
+CONFRONTO CONTRA OS IRMÃOS NIJIMURA
+Artigo principal: Os Irmãos Nijimura (Arco da História)
+
+Keicho é morto por um inimigo desconhecido e seu arco e flecha são roubados.
+Josuke e Koichi Hirose encontram uma casa dilapidada quando Koichi é atingido pela Flecha e levado para dentro. Josuke luta contra Okuyasu e Keicho Nijimura. O ataque "A Mão" de Okuyasu pode apagar o espaço, mas Okuyasu acaba desmaiando. O " Bad Company" de Keicho , um exército em miniatura, se mostra poderoso, mas Josuke lança um pequeno míssil de volta contra ele, derrotando o usuário.
+
+Josuke e Koichi descobrem o pai dos irmãos , transformado em uma criatura muda e imortal pelas células de DIO. Keicho explica que quer encontrar uma maneira de matá-lo, mas Josuke consegue convencer Okuyasu a procurar uma cura. O grupo é repentinamente atacado pelo Stand elétrico Red Hot Chili Pepper , que mata Keicho e rouba o Arco e Flecha. Assim, Okuyasu se junta aos aliados para localizar esse segundo assassino.
+
+A AMEAÇA DA PIMENTA MALAGUETA VERMELHA
+Artigo principal: Koichi Hirose (Echoes) (Arco da História)
+Artigo principal: Toshikazu Hazamada (Superfície) (Arco Narrativo)
+Artigo principal: Yukako Yamagishi se apaixona (Arco da história)
+Jotaro, considerado a maior ameaça, é avisado pelo usuário do Red Hot Chili Pepper para deixar Morioh. Como Jotaro se recusa, novos usuários de Stand surgem.
+
+Certo dia, Koichi é extorquido por Tamami Kobayashi, que lhe entrega o novo Stand The Lock , capaz de multiplicar o sentimento de culpa. Quando Josuke expõe o golpe, Tamami foge. Mais tarde, Tamami visita Koichi e envolve sua mãe e irmã , provocando a evolução do Stand de Koichi para Echoes ACT1 , que pode implantar sons em objetos e pessoas. Quando Koichi consegue aliviar a culpa de sua mãe, Tamami se rende a ele.
+
+
+Durante esse período, Koichi se torna mais confiante.
+Mais tarde, o colega de classe Toshikazu Hazamada mira em Josuke com seu novo Stand , Surface , assumindo a aparência de Jotaro para matá- lo. Apesar de Koichi e Josuke conseguirem encontrar Jotaro e avisá-lo, Josuke é controlado por Surface e quase o apunhala pelas costas. No entanto, alguns motoqueiros que Hazamada havia provocado anteriormente derrubam o usuário de Stand inimigo.
+
+Certa manhã, a colega de classe Yukako Yamagishi confessa seu amor por Koichi, que inicialmente fica feliz, mas depois descobre que Yukako está violentamente obcecada por ele. Quando Josuke e Okuyasu tentam ajudá-lo difamando-o, Yukako sequestra Koichi, determinada a fazê-lo se apaixonar por ela enquanto o mantém preso com seu novo Stand, Love Deluxe .
+
+Preso em uma casa desconhecida, Koichi tem que suportar a presença de Yukako por um tempo. Quando ela sai, Koichi envia Echoes para fora para pedir ajuda, mas é visto por Yukako. Ao arrombar a porta da casa, Echoes evolui para ACT2 , e Yukako é surpreendida por um efeito sonoro. Apesar de Yukako tentar matá-lo, Koichi a resgata quando ela cai de um penhasco; o garoto sai vitorioso e amadurece, enquanto Yukako controla seu amor por ele.
+
+INTERLÚDIO CULINÁRIO: TRATTORIA DE TONIO TRUSSARDI
+Artigo principal: Vamos comer comida italiana (Arco da história)
+Josuke e Okuyasu descobrem um estranho restaurante italiano cujo dono e chef, Tonio Trussardi, prepara pratos para Okuyasu. Os pratos são extremamente saborosos, mas causam efeitos estranhos no corpo de Okuyasu, levando Josuke a suspeitar de um ataque de Stand. No entanto, trata-se apenas de um mal-entendido, e Trussardi é, na verdade, benevolente.
+
+CONFRONTO CONTRA AKIRA OTOISHI
+Artigo principal: Red Hot Chili Pepper (Arco Narrativo)
+Red Hot Chili Pepper finalmente reaparece, atacando Josuke em sua casa, mas recuando rapidamente, insatisfeito com seu poder atual. Jotaro reúne o grupo em um campo, buscando se afastar do alcance do ataque, e explica a chegada de Joseph Joestar à cidade para utilizar seu Stand psíquico, Hermit Purple, para localizar o usuário. No entanto, Red Hot Chili Pepper ouve a conversa e foge para o porto. Okuyasu persegue Red Hot Chili Pepper, mas, embora consiga derrotá-lo, comete o erro de descobrir cabos elétricos subterrâneos, permitindo que o Stand inimigo escape.
+
+
+Okuyasu derrota Akira Otoishi
+Quando Joseph chega aos cais de Morioh, Jotaro e Okuyasu vão até o barco para escoltar o velho. Enquanto isso, Akira Otoishi se revela para Josuke e Koichi. Josuke e Crazy Diamond então lutam bravamente contra Otoishi e Red Hot Chili Pepper , mas este último é fisicamente mais forte e mais rápido. Josuke consegue prender Red Hot Chili Pepper dentro de um pneu e, quando este o perfura com um soco, o pneu é lançado ao oceano, dispersando sua energia elétrica.
+
+Quando o barco se aproxima do cais, Otoishi se infiltra na embarcação e se faz passar por um agente da Fundação Speedwagon . Okuyasu, que nunca tinha visto Otoishi, consegue desmascará-lo por pura sorte, justamente quando o Red Hot Chili Pepper tenta assassinar Joseph. Pai e filho finalmente se encontram.
+
+UM BREVE ALÍVIO
+Artigo principal: Encontramos algo inacreditável! (Arco da história)
+Artigo principal: Vamos à casa do desenhista de mangá (Arco da história)
+Artigo principal: Vamos caçar! (Arco da história)
+O arco e flecha de Otoishi são levados sob a custódia da Fundação Speedwagon , promovendo uma paz temporária.
+
+Josuke e Joseph compartilham um momento constrangedor antes de descobrirem Shizuka , um bebê invisível (do Stand Achtung Baby ) aparentemente abandonado nas ruas de Morioh. Quando Shizuka cai em um lago enquanto invisível, Joseph consegue impressionar Josuke usando seu próprio sangue para encontrá-la, e o relacionamento entre eles melhora. Posteriormente, Joseph adota Shizuka.
+
+
+O excêntrico Rohan Kishibe aparece
+Mais tarde, Koichi e Toshikazu Hazamada encontram o excêntrico mangaká Rohan Kishibe , usuário do Heaven's Door , um poder que transforma em livros qualquer pessoa que veja seus desenhos. Rohan, muito interessado em Koichi por considerá-lo um ótimo personagem de quadrinhos, o obriga a ir até sua casa para extrair mais informações dele.
+
+Josuke e Okuyasu testemunham Koichi entrando na casa de Rohan. Eles tentam salvar Koichi, mas o poder do mangaká é difícil de lidar. Rohan incapacita Okuyasu e força Josuke a entrar em sua sala de estar, com o estudante fechando os olhos para evitar ser afetado pelo Heaven's Door. No entanto, Rohan o provoca sobre seu cabelo e o jovem fica literalmente cego de raiva. Imune ao Stand de Rohan, Josuke o derrota. O segredo de como Josuke cortou o cabelo é revelado, e Rohan é levado para o hospital.
+
+Mais tarde, Jotaro pede a ajuda de Josuke para caçar um usuário de Stand com corpo de rato , criado por Otoishi. Josuke descobre o rato que usa o Ratt , um poder que derrete qualquer um que ele atire, e o derrota por pouco. No entanto, a existência de um segundo rato usando o mesmo Stand, apelidado de Bug-Eaten por Jotaro, é revelada.
+
+Jotaro e Josuke caçam Bug-Eaten, mas são atraídos para um terreno desfavorável onde o rato fica livre para atirar nos dois usuários de Stand. Jotaro decide se usar como isca, e Josuke consegue atirar no roedor, matando-o.
+
+UM ASSASSINO ESPREITA EM MORIOH
+Artigo principal: A aventura de Rohan Kishibe (arco narrativo)
+Artigo principal: A Colheita de Shigechi (Arco da História)
+Artigo principal: Yoshikage Kira só quer viver em paz (Arco da história)
+
+Reimi implorando a Rohan e Koichi
+Após receber alta do hospital, Rohan convence Koichi a ajudá-lo em sua pesquisa. A dupla descobre um beco fantasmagórico habitado por Reimi Sugimoto , vítima de um assassino em série desconhecido há mais de uma década, e seu cachorro Arnold . Ela implora a Koichi e Rohan que encontrem seu assassino, que continua a atacar a população de Morioh, e Rohan aceita seu pedido. Rohan e Koichi também escapam dos espíritos malignos do beco, que arrastam para um lugar desconhecido qualquer um que olhe para trás.
+
+Yoshikage Kira é apresentado, falando como se estivesse em um encontro romântico com a mão decepada de uma mulher.
+
+Enquanto isso, Josuke , que está quase arruinado, junto com Okuyasu , conhece uma criança chamada  Shigekiyo Yangu  , que gosta de ser chamado de "Shigechi". O Stand de Shigekiyo ,  Harvest , que lembra uma colmeia, permite que ele colete pequenos itens de toda a cidade. Fazendo um acordo, eles realizam vários planos para juntar dinheiro, mas os ganhos despertam a ganância em Shigechi.
+
+Quando o trio fica rico graças a um bilhete de loteria premiado, Shigechi rouba o pagamento. Após uma perseguição pelas ruas e telhados de Morioh, Shigechi consegue encurralar Josuke e Okuyasu injetando álcool diretamente em suas correntes sanguíneas. No entanto, Okuyasu usa A Mão para teletransportar o pagamento para sua mão, e Josuke o rasga e joga os pedaços ao vento. Shigechi envia Harvest atrás dos pedaços, mas fica indefeso quando Okuyasu o soca. O trio se reconcilia depois.
+
+
+Yoshikage Kira , o assassino em série, espreita bem debaixo do nariz dos heróis.
+Certo dia, Yoshikage Kira está fazendo um piquenique com sua namorada , que esconde uma mão decepada dentro de um saco plástico. Por coincidência, Shigechi troca de saco com Kira por engano. Embora Kira tente recuperar a mão furtivamente, Shigechi descobre o segredo de Kira. Kira revela seu Killer Queen , um poder capaz de criar bombas, e mata Shigechi. O último ato do garoto é enviar um botão arrancado do paletó de Kira para Josuke através do Harvest .
+
+Assim, os usuários de Stand conhecidos da cidade se reúnem e concordam em colaborar para localizar Kira e acabar com suas depredações.
+
+INTERLÚDIO ROMÂNTICO: YUKAKO E KOICHI
+Artigo principal: Yukako Yamagishi Sonhos de Cinderela (Arco de História)
+Yukako ainda está apaixonada por Koichi , mas não sabe como salvar o relacionamento. Seguindo o conselho de Joseph , ela conhece Aya Tsuji , a esteticista e gerente do salão Cinderela , que deixa as mulheres mais bonitas com o produto Cinderela . Yukako consegue conquistar o coração de Koichi, mas esquece de passar batom, ficando com uma aparência horrível.
+
+Quando Yukako, Koichi e Aya se reencontram no salão de beleza desta última, Aya testa Koichi, pedindo-lhe que escolha o rosto original de Yukako dentre uma infinidade de outros rostos. Quando Koichi pede a Aya que o deixe cego caso ele erre, Aya, impressionada com seu amor, devolve a Yukako seu rosto original.
+
+A FUGA DE YOSHIKAGE KIRA
+Artigo principal: Sheer Heart Attack (Arco da História)
+Artigo principal: Atom Heart Father (Arco da História)
+Artigo principal: A nova situação de Yoshikage Kira, Parte 1
+Após o assassinato de Shigechi, Jotaro e Koichi encontram o colete correspondente ao botão de Kira em uma sapataria que também funciona como oficina de conserto de roupas, onde Kira ataca com o poder secundário de seu Stand, Sheer Heart Attack , uma bomba em miniatura, invulnerável e com rosca. Kira foge antes que Jotaro e Koichi descubram sua identidade. Jotaro tem dificuldade em atacar a bomba e fica incapacitado ao tentar proteger Koichi de uma explosão.
+
+Koichi chama Josuke para ajudá-lo e seu Stand evolui para Echoes ACT3 . ACT3 pode aumentar o peso de um objeto e imobiliza Sheer Heart Attack, obrigando Kira a voltar e lutar contra Koichi. Embora derrote o garoto facilmente e quase o mate, Jotaro intervém e espanca Kira antes de desmaiar.
+
+Josuke e Okuyasu chegam e resgatam seus companheiros. Eles então cercam Kira, que corta a própria mão e usa Sheer Heart Attack contra eles. Josuke usa Crazy Diamond para fazer a mão de Kira voar de volta em sua direção, seguindo-o, mas o grupo descobre que ele forçou Aya Tsuji a alterar suas feições com o Stand dela, matando-a antes que ela pudesse ajudar o grupo. Kira escapa com uma nova identidade.
+
+
+O novo rosto de Kira
+Mais tarde, Jotaro , Josuke , Okuyasu e Koichi investigam a antiga vida e residência de Kira . O fantasma do pai de Kira , Yoshihiro Kira, aparece e ataca o grupo a partir de uma fotografia, fortalecido pelo Stand Atom Heart Father .
+Yoshihiro prende Jotaro e Josuke em uma sala usando seus poderes esotéricos e quase os decapita, mas Jotaro o captura em uma fotografia que mostra apenas o fantasma. Yoshihiro escapa com um segundo arco e flecha, com o objetivo de criar um grupo de usuários de Stand para proteger seu filho, que está escondido.
+
+Entretanto, Kira é mostrada ocupando a aparência, o lar e a família de Kosaku Kawajiri . Anteriormente indiferente ao marido, Shinobu Kawajiri percebe uma mudança no comportamento de "Kosaku", apenas para se encantar por ele.
+
+A AMEAÇA DOS KIRAS
+Artigo principal: O garoto do Pedra-Papel-Tesoura está chegando! (Arco da história)
+Artigo principal: A nova situação de Yoshikage Kira, Parte 2
+Para manter os heróis longe de seu filho, Yoshihiro Kira decide criar o máximo de usuários de Stand que conseguir para usá-los contra aqueles que o investigam. O primeiro a quem ele concede um Stand é um garoto.
+
+
+Rohan joga uma partida dramática de pedra-papel-tesoura contra Ken Oyanagi.
+Mais tarde, Rohan é desafiado por Ken Oyanagi para uma série de partidas de pedra-papel-tesoura . Rohan recusa, mas Ken o convence a aceitar. É então que o mangaká descobre que o garoto é o usuário do novo Stand Boy II Man , que pode roubar o poder de alguém se vencer três rodadas de pedra-papel-tesoura.
+
+À beira da derrota, Rohan consegue usar o poder de Shizuka para tornar as coisas invisíveis e se salvar, transformando a "tesoura" de Ken em "pedra" e vencendo na primeira tentativa. Em seguida, ele derrota Ken completamente em seu jogo de pedra-papel-tesoura de forma justa e limpa.
+
+Enquanto isso, na casa dos Kawajiri, Yoshikage Kira se esforça para se adaptar à sua nova vida e reprimir seus impulsos assassinos, o que desperta a suspeita de Hayato , o filho espião de Kosaku .
+
+INTERLÚDIO TRANQUILO: JOSUKE, ROHAN E O ALIENÍGENA(?)
+Artigo principal: Eu sou um alienígena (Arco da história)
+Um dia, Josuke e Okuyasu encontram Mikitaka Hazekura , que se apresenta como um alienígena com a habilidade de metamorfose dos poderes Terra, Vento e Fogo . Convencido, Josuke se torna amigo de Mikitaka e coopera com ele para enganar Rohan em um jogo de dados, fazendo com que Mikitaka se transforme nos dados. Mikitaka tem dificuldades em manter a farsa e Rohan acaba suspeitando que Josuke está trapaceando. O jogo é interrompido quando Rohan acidentalmente incendeia sua casa.
+
+Josuke e Mikitaka finalmente escapam ilesos, enquanto a casa de Rohan é incendiada por causa de uma lupa.
+
+A CAÇADA RECOMEÇA.
+Artigo principal: Highway Star (Arco da História)
+Artigo principal: Gatos Amam Yoshikage Kira (Arco da História)
+Artigo principal: Vamos morar em uma torre de transmissão (Arco narrativo)
+Artigo principal: Enigma Boy (Arco da História)
+Artigo principal: Meu Pai Não É Meu Pai (Arco da História)
+Artigo principal: Cheap Trick (Arco da História)
+Ainda ressentido com o jogo, Rohan encontra Josuke novamente em um ônibus. Dentro de um túnel, ele avista nas paredes o que parece ser uma sala onde um homem se inclina e decepa a mão de uma mulher inconsciente. Incapaz de convencer Josuke do que viu, Rohan investiga o túnel sozinho. É então que o Stand Highway Star aprisiona Rohan na sala e absorve sua força vital para curar seu usuário.
+
+
+Josuke é perseguido por Highway Star.
+Josuke intervém e decide ir procurar o usuário. Enquanto Highway Star persegue implacavelmente Josuke, que pilota uma motocicleta pelas ruas de Morioh, o estudante liga para Koichi, que descobre a localização do inimigo. Josuke consegue alcançar o usuário, Yuya Fungami , e o derrota.
+
+Enquanto isso, na casa dos Kawajiri, Shinobu Kawajiri mata acidentalmente o gato Tama . No entanto, Kira o encontra ressuscitado como uma planta usando o Stand Stray Cat . Kira e Stray Cat lutam brevemente e Kira tem dificuldades contra o Stand que controla o ar. Contudo, ele logo se distrai e Kira o transporta para o sótão da casa.
+
+Um dia, Josuke , Okuyasu e Mikitaka encontram Toyohiro Kanedaichi , um homem que vive em uma torre de transmissão. Toyohiro engana Josuke, fazendo-o entrar na torre, que é seu Stand , Super Fly . A única pessoa restante dentro de Super Fly não consegue escapar, e Josuke e Mikitaka unem forças para jogar Toyohiro de volta para dentro dela.
+
+As acrobacias de Toyohiro e seu conhecimento das sutilezas de seu Stand lhe dão vantagem dentro da torre, e Mikitaka é ferido enquanto Josuke quase cai do topo. No entanto, Crazy Diamond devolve o disparo de energia contra Josuke, atingindo Toyohiro, que então se rende. Toyohiro revela então que Koichi foi abatido por outro dos assassinos de Yoshihiro .
+
+Alertados por Toyohiro sobre um novo usuário de Stand inimigo na cidade, Josuke e Yuya unem forças para encontrar o culpado, que se revela ser Terunosuke Miyamoto , o novo usuário do Stand Enigma . Enigma aprisiona pessoas em papel assim que Terunosuke consegue adivinhar quais tiques elas têm quando estão com medo. Ele usa Tomoko como isca para Josuke e consegue prender o estudante dentro de uma folha. No entanto, Yuya intervém e consegue salvar Josuke de ser despedaçado. Em seguida, Josuke derrota Terunosuke fundindo-o com um livro, libertando Koichi e sua mãe, Tomoko .
+
+Entretanto, Kira finalmente perde a cabeça e cede aos seus impulsos, assassinando um homem e uma mulher dentro de sua casa. Contudo, Kira percebe que Hayato Kawajiri o viu. Quando Kira confronta Hayato sobre isso, Hayato diz a Kira que possui inúmeras provas de que não é seu verdadeiro pai e tenta intimidar o assassino em série para que deixe sua família ilesa.
+
+
+A caçada a Kira se aproxima lenta, mas seguramente.
+Enquanto Kira precisa lidar com Hayato, Rohan repara em uma fotografia de Hayato filmando seu pai, mas sua investigação é interrompida quando ele recebe Masazo Kinoto , o arquiteto encarregado de reformar sua casa. Masazo detesta que vejam suas costas e Rohan não consegue resistir à tentação de espiar.
+
+Infelizmente, ele herda o Stand Cheap Trick , que se prende às costas de Rohan e o matará se alguém o vir. Cheap Trick é invisível para todos, exceto Rohan, é invulnerável e tenta incessantemente fazer com que as pessoas vejam as costas de Rohan. Com a ajuda de Koichi , Rohan usa os espíritos malignos do beco fantasma para se livrar dele.
+
+CONFRONTO FINAL CONTRA YOSHIKAGE KIRA
+Artigo principal: Mais um que cai na armadilha (Arco da história)
+Artigo principal: Crazy Diamond é Inquebrável (Arco da História)
+Kira, após matar Hayato em um acesso de raiva, se vê forçado a fugir de Morioh. Ele se recusa a se render e é atingido pela Flecha, que lhe concede a nova habilidade Mordida na Poeira .
+
+
+O confronto sem limites entre Josuke e Kira
+Hayato é forçado a reviver uma manhã inteira se alguém perguntar sobre Kira ou se ele contar a alguém sobre Kira, com a cabeça da testemunha explodindo. Além disso, a morte ainda ocorrerá no próximo ciclo temporal. Durante os ciclos temporais, Rohan , Jotaro , Josuke , Okuyasu e Koichi morrem. Encurralado, Hayato tenta assassinar Kira usando o Stray Cat , mas a tentativa falha.
+
+No entanto, Hayato consegue enganar Kira para que ele revele seu próprio nome publicamente, e Josuke, a quem Hayato havia chamado, ouve a conversa. Forçado a desfazer o ataque "Bites the Dust" para se defender, Kira cancela a morte de todos e é encurralado por Josuke e Okuyasu. Infelizmente, ele usa as bolhas de ar invisíveis dos Stray Cats como bombas e abre um buraco no estômago de Okuyasu.
+
+Uma luta se inicia entre Josuke e Kira . Okuyasu é curado, mas permanece inconsciente. Josuke e Hayato se refugiam em uma casa, onde as bolhas de ar de Kira se mostram incrivelmente precisas em rastreá-lo. Josuke descobre Yoshihiro e o mata de vez usando as bolhas de Kira. Embora consiga ferir Kira com um projétil, Josuke é atingido por uma das bombas.
+
+Josuke, gravemente ferido, confronta seu inimigo do lado de fora. Os dois usuários de Stand se enfrentam novamente, e embora Killer Queen esteja fisicamente mais fraco, as bolhas de Stray Cat bloqueiam os socos de Crazy Diamond. Josuke é salvo no último instante quando Okuyasu acorda e teletransporta Stray Cat para longe de Killer Queen .
+
+Kira se vê cercado e encurralado pelos heróis, mas ameaça usar uma enfermeira para fazer o tempo voltar a fazer sentido.
+
+CIDADE DE MORIOH - O CORAÇÃO DE OURO
+
+Reimi ascende à vida após a morte.
+Artigo principal: Crazy Diamond é Inquebrável (Arco da História)
+Kira se encontra no beco fantasma após falhar em ativar Bites the Dust e reencontra Reimi Sugimoto . Embora ele conheça o beco fantasma e tente fazer Reimi olhar para trás, Arnold , o cachorro, intervém e arranca sua mão com uma mordida, fazendo o assassino em série tropeçar. Kira é então arrastado para o submundo, permitindo que Reimi encontre a paz.
+
+Após se despedir de todos, Reimi ascende ao Céu. Josuke se despede de Jotaro e Joseph , que confiam na capacidade da nova geração de proteger a cidade, mas Josuke, sem cerimônia, rouba a carteira do pai. A vida subsequente de cada herói é descrita, e é dito que o verão que se segue transcorre sem incidentes.
+This content comes from JoJo's Bizarre Encyclopedia (https://jojowiki.com), and must be attributed to its authors if you are using it on another wiki or web page, as specified in the license.
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
+

@@ -1,0 +1,118 @@
+<html><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JoJo'sCrazyNoisyBizarreDescription4</title>
+<style>
+body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to top, #CC00CC, Blue);
+      color: #00FFFF;
+      text-align: justify;
+    }
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px; 
+  text-align: center;
+  text-emphasis: filled double-circle #ffb703;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: #000000; 
+  color: blue; 
+  border: 2px solid red;
+}
+
+.button1:hover {
+  background-color: #CC00CC;
+  color: black;
+  border: 2px wavy red;
+}
+
+.button2 {
+  background-color: #000000; 
+  color: blue; 
+  border: 2px solid red;
+}
+
+.button2:hover {
+  background-color: #CC00CC;
+  color: black;
+  border: 2px wavy red;
+}
+
+.button3 {
+  background-color: #000000; 
+  color: blue; 
+  border: 2px solid red;
+}
+
+.button3:hover {
+  background-color: #CC00CC;
+  color: black;
+  border: 2px wavy red;
+}
+
+ .button4 {
+  background-color: #000000; 
+  color: blue; 
+  border: 2px solid red;
+}
+
+.button4:hover {
+  background-color: #CC00CC;
+  color: black;
+  border: 2px wavy red;
+}
+
+.button5 {
+  background-color: #000000; 
+  color: blue; 
+  border: 2px solid red;
+}
+
+.button5:hover {
+  background-color: #CC00CC;
+  color: black;
+  border: 2px wavy red;
+}
+.button6 {
+  background-color: #000000; 
+  color: blue; 
+  border: 2px solid red;
+}
+
+.button6:hover {
+  background-color: #CC0000;
+  color: black;
+  border: 2px wavy red;
+}
+
+    .texto01 {
+      font-family: "Times New Roman", serif;
+    }
+
+</style>
+</head>
+<body>
+<a href="Body.html" class="button button1" align="left">Apresentação</a>
+<a href="PauloPortaFolha2.html" class="button button2" align="left">Sobre Mim</a>
+<a href="PauloPortaFolha3.html" class="button button3" align="left">Projetos</a>
+<a href="PauloPortaFolha4.html" class="button button4" align="left">Experiência Profissional</a>
+<a href="PauloPortaFolha5.html" class="button button5" align="left">Formação e Cursos</a>
+<a href="PauloPortaFolha6.html" class="button button6" align="left">E-Mail</a>
+<br>Formação e Cursos<br>
+<!-- .Graduação(Ainda não, mas da ETEC sla?)/Técnico/Certificações(nenhuma ainda, porém consegui bolsa na ETEC?)
+.Cursos Extras(se agregarem valor a área)--->
+
+Graduei do Ensino Médio há 2 anos atrás em 2023
+Também tive cursos de Inglês e Espanhol em meu passado para obter certificados, tendo obtido certificação de Fluência em Inglês e sou profissional registrado com carteira de vacinação e funcionário público CLT.
+Também sou multilíngue por anos de estudo sobre todas as línguas existentes, incluindo línguas mortas como o latim, conseguindo decifrar milhares de textos antigos perdidos para o tempo em um piscar de olhos. Desafortunadamente para todos, não me interessei por esse aspecto da minha vida e continuei com o Banco de Dados, fazendo minha faculdade e só pegando uma certificação pois era necessário para trabalhar internacionalmente com os meus ídolos do Banco de Dados. Peter e Chen.  Juntos eles tem um relacionamento com índice alto de Dados com chave primária, a globalização composta do homem, da máquina: Peter Chen. Desde que eu conheci ele, fui inspirado pelo seu glorioso propósito e seu trabalho excelente na área de Infórmatica e da Tecnologia de Informação, tendo ele sempre em mente quando repasso meus ensinamentos para colegas ou estudantes meus. Tenho orgulho de ensinar e de meus muitos títulos que ganhei com minha reputação, e sempre sinto prazer em ver alguém que conheço entender meu método de ensino sem precisar falar mais que o necessário, sendo uma das razões que também virei um professor após um vestibulinho, o que me levou a me cursar novamente mais línguas para ser acessível a mais pessoas e públicos. Atualmente ainda curso na Universidade de São Paulo, com o Duolingo passarinho malvado e planejo cursar línguas até o fim dos meus dias.
+<br>
+</body>
+</html>

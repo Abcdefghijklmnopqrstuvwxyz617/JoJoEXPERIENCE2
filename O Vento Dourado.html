@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Vento Dourado</title>
+
+<style>
+/* =========================== */
+/* CONFIGURAÇÃO DO BODY        */
+/* =========================== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #FFD700;
+  text-align: justify;
+
+  /* FUNDO AUTOMÁTICO VERTICAL */
+  background-image: url("TheWindOfGoldest.jpg");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: top center;
+  background-attachment: scroll;
+}
+
+/* =========================== */
+/* BOTÕES                      */
+/* =========================== */
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position: relative;
+  z-index: 10; /* Mantém os botões acima do overlay */
+}
+
+.button1 { background-color: #CC00C0; color: yellow; border: 2px solid #D3D3D3; }
+.button1:hover { background-color: #FFFF00; color: blue; border: 2px solid #FF4500; }
+
+.button2 { background-color: red; color: #8B008B; border: 2px solid #DEB887; }
+.button2:hover { background-color: #FFFF00; color: #00BF00; border: 2px solid #9400D3; }
+
+.button3 { background-color: #F8C54B; color: green; border: 2px solid #D3D3D3; }
+.button3:hover { background-color: #FF00FF; color: black; border: 2px solid #FFD700; }
+
+.button4 { background-color: #FFC0CB; color: Yellow; border: 4px solid #9932CC; }
+.button4:hover { background-color: #D1EEF0; color: #3B4369; border: 4px solid #F2B9C5; }
+
+.button5 { background-color: #FF0000; color: pink; border: 2px solid #D3D3D3; }
+.button5:hover { background-color: #FFF39F; color: #FF69B4; border: 2px solid #FF813B; }
+
+.button6 { background-color: #000000; color: #CCCC00; border: 6px solid white; }
+.button6:hover { background-color: #2CC4EA; color: #7FFF00; border: 0px solid red; }
+
+.button7 { background-color: #b493ff; color: red; border: 2px solid pink; }
+.button7:hover { background-color: #ff70c8; color: #BFE7FF; border: 2px solid yellow; }
+
+.button8 { background-color: #8B0000; color: purple; border: 2px solid #FFFF00; }
+.button8:hover { background-color: #89CFEF; color: white; border: 2px solid blue; }
+
+.button9 { background-color: #32CD32; color: gray; border: 2px solid white; }
+.button9:hover { background-color: white; color: #DCDCDC; border: 2px solid #0000CD; }
+
+.button10 { background-color: #000000; color: blue; border: 2px solid red; }
+.button10:hover { background-color: #CC00CC; color: black; border: 2px wavy red; }
+
+/* =========================== */
+/* TIME STOP EFFECT            */
+/* =========================== */
+.timestop-freeze {
+  filter: grayscale(100%) brightness(40%);
+  pointer-events: none;
+  transition: filter 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Vibração Pucci */
+.vibrate {
+  animation: vibrar 0.15s infinite linear;
+}
+
+@keyframes vibrar {
+  0% { transform: translate(1px, 1px); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+/* Overlay */
+.timestop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.85);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.timestop-active {
+  opacity: 1;
+}
+
+.texto01 {
+      font-family: "Times New Roman", serif;
+    }
+
+/* =========================== */
+/* IMAGENS                     */
+/* =========================== */
+.JOJO-img {
+  float: right;
+  max-width: 45%;
+  height: auto;
+  border: 5px solid #FFD700;
+  border-radius: 8px;
+  margin-left: 20px; /* afastar o texto */
+  margin-bottom: 10px; /* opcional */
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="timestop-overlay" id="timestop"></div>
+
+<div class="row">
+<a href="O Sangue Fantasma.html" class="button button1">Parte 1: Phantom Blood</a>
+<a href="A Tendência De Batalha.html" class="button button2">Parte 2: Battle Tendency</a>
+<a href="Os Cruzados Do Pó Estelar.html" class="button button3">Parte 3: Stardust Crusaders</a>
+<a href="O Diamante É Inquebrável.html" class="button button4">Parte 4: Diamond Is Unbreakable</a>
+<a href="O Vento Dourado.html" class="button button5">Parte 5: Vento Aureo</a>
+<a href="O Oceano De Pedra.html" class="button button6">Parte 6: Stone Ocean</a>
+<a href="A Corrida Da Bola De Aço.html" class="button button7">Parte 7: Steel Ball Run</a>
+<a href="O JoJo Leão.html" class="button button8">Parte 8: JoJolion</a>
+<a href="As JoJo Terras.html" class="button button9">Parte 9: JoJolands</a>
+</div>
+
+<script>
+const button3 = document.querySelector(".button3");
+const button6 = document.querySelector(".button6");
+const overlay = document.getElementById("timestop");
+const allButtons = document.querySelectorAll(".button");
+
+button3.addEventListener("mouseenter", () => {
+  overlay.classList.add("timestop-active");
+  allButtons.forEach(btn => {
+    if (btn !== button3 && btn !== button6) {
+      btn.classList.add("timestop-freeze");
+    }
+  });
+
+  button6.classList.add("vibrate");
+});
+
+button3.addEventListener("mouseleave", () => {
+  overlay.classList.remove("timestop-active");
+  allButtons.forEach(btn => {
+    btn.classList.remove("timestop-freeze");
+  });
+
+  button6.classList.remove("vibrate");
+});
+</script>
+<p>
+<img class="JOJO-img" src="ThePissDrinkers.jpg" alt="Korega... Requiem.. Da.">
+</p>
+
+<div class="texto01">
+GIOVANNA ENTRA NA PASSIONE
+Artigo principal: Experiência Gold (Arco Narrativo)
+Artigo principal: Bucciarati está chegando (Arco da história)
+Artigo principal: Conheça o gangster por trás do muro (Arco da história)
+Artigo principal: Entrando para a Gangue (Arco da História)
+
+Giovanna tem um sonho hoje.
+No ano de 2001, Koichi Hirose chega a Nápoles a pedido de Jotaro Kujo para investigar um garoto chamado Haruno Shiobana, também conhecido como Giorno Giovanna , que se revela ser filho de DIO . Giorno rouba a bagagem de Koichi graças ao seu Stand , Gold Experience , que lhe permite transformar objetos inanimados em criaturas vivas. Giorno é então confrontado por Luca Olho-Vazado , um membro da gangue Passione , a mais poderosa de Nápoles , que morre ao ter sua agressão refletida pelo poder do Stand de Giorno.
+
+Em resposta, Giorno é confrontado por Bruno Bucciarati , também membro da Passione, enviado para investigar as circunstâncias da morte de Luca. Bucciarati desmascara Giorno e o ataca com seu Stand , Sticky Fingers , que tem a habilidade de criar zíperes em qualquer coisa. Um flashback então se inicia, detalhando o crescimento de Giorno, de uma criança tímida e intimidada a um adolescente mais confiante e carismático. Superando as expectativas de Bucciarati e derrotando-o com as habilidades extraordinárias de Gold Experience, Giorno estabelece uma relação de confiança com Bucciarati ao expor uma aversão mútua às práticas da Passione no tráfico de drogas, principalmente para menores. Bucciarati então aceita ajudar Giorno a se infiltrar na Passione.
+
+Após a luta, Bucciarati oferece a Giorno a chance de se juntar à Passione. Giorno encontra o tenente da Passione, Polpo , que está preso. Polpo o entrevista e lhe dá um isqueiro com a instrução de mantê-lo aceso por 24 horas antes de se encontrarem novamente. Giorno retorna ao seu dormitório e protege o isqueiro aceso de Polpo como parte de seu teste, mas Koichi complica a tarefa de Giorno ao invadir seu quarto em busca de seu passaporte. Quando a chama é apagada por um zelador que passava e reacendida pelo mesmo zelador, o Stand de Polpo , Black Sabbath , aparece, retirando uma flecha de sua boca e apunhalando o zelador, matando-o. Black Sabbath, que é muito poderoso nas sombras, mas fraco fora delas, quase apunhala Giorno, mas Koichi intervém.
+
+Giorno explica sua aspiração a Koichi, que o reconhece como o descendente espiritual da família Joestar .
+
+Após receber o conselho de Koichi sobre a natureza do Stand de Polpo, Giorno consegue atrair Black Sabbath para um local aberto e o destrói com sucesso. No dia seguinte, depois de receber seu distintivo de membro, Giorno mata Polpo para vingar o zelador.
+
+REUNIÃO DA EQUIPE BUCCIARATI
+Artigo principal: 5 Mais 1
+
+Giorno e seus novos companheiros
+Bucciarati explica a Giorno a estrutura da Passione e que, se eles desejam se aproximar do Chefe , precisam de uma posição hierárquica mais elevada.
+
+Giorno conhece os camaradas de Bucciarati (como parte do Time Bucciarati ): Narancia Ghirga , Guido Mista , Leone Abbacchio e Pannacotta Fugo . Quando Abbacchio tenta medir e humilhar Giorno, fazendo-o beber sua urina, Giorno parece engolir seu copo de um só gole, impressionando a turma.
+
+A FORTUNA DE POLPO
+Artigo principal: O Mistério da Máquina Suave (Arco Narrativo)
+Artigo principal: Moody Blues Contra-Ataca (Arco da História)
+Artigo principal: Sex Pistols aparecem (Arco da história)
+Após a morte de Polpo, dois gangsters discutem o aparente suicídio de Polpo e o rumor de sua fortuna escondida, enquanto Bucciarati leva seu grupo em um iate para Capri a fim de recuperar os cerca de ¥600.000.000, com os quais pretende comprar uma posição como Operativo. Como Bucciarati é a única outra pessoa que sabe onde a fortuna está, ele se torna alvo de seus companheiros de gangue.
+
+
+Capri é onde o tesouro de Polpo está escondido.
+A caminho de Capri, o grupo é alvo de um ataque. Narancia , Mista e Fugo desaparecem após um ataque de um agressor oculto. Giorno se oferece para ser atacado a fim de ajudar a obter informações sobre o agressor e é esfaqueado por um braço que emerge do convés inferior, antes de murchar como um balão. Abbacchio ativa seu Stand , Moody Blues , reproduzindo a história de Narancia e revelando que ele estava murcho. Moody Blues mostra Narancia escondido em um cano enquanto estava murcho. Depois que Abbacchio se deixa atacar enquanto o rastreava, é revelado que o barco deles foi atingido antes por outro barco murcho e Mario Zucchero , do Stand Soft Machine, é rapidamente derrotado por Bucciarati.
+
+Mario Zucchero é exposto como membro da Passione Romana e torturado, antes de Moody Blues mostrar ele transmitindo pelo rádio o destino do grupo, sugerindo que seu parceiro já os ultrapassou e os levou para Capri. Mista revela seu Stand, Sex Pistols , capaz de redirecionar e ricochetear as balas de sua pistola, e concorda em ir com Giorno à frente do grupo diretamente para o porto de Marina Grande , na ilha. Giorno e Mista conseguem atrair o inimigo, mas ele escapa e apenas Mista consegue segui-lo. Sale, também membro da Passione , revela seu Stand, Kraft Work , capaz de congelar/fixar objetos ao tocá-los. Apesar do poder de Kraft Work, Mista consegue acertar dois tiros na cabeça de Sale, derrotando-o.
+
+PROTEGENDO A FILHA DO CHEFE
+Artigo principal: O esconderijo secreto de seiscentos milhões de ienes
+Artigo principal: Aerosmith de Narancia (Arco da História)
+A Equipe Bucciarati se reúne em um banheiro público em Capri. Convocado anteriormente, um Operativo chamado Pericolo recolhe os ¥600.000.000 (guardados com Sticky Fingers dentro de um mictório), antes de conceder a Bucciarati o status de Operativo, juntamente com a última ordem de Polpo para o Chefe : Proteger sua filha, que está presente junto com Pericolo disfarçado de faxineiro. Trish Una é apresentada por Pericolo.
+
+
+Trish Una, a preciosa filha do Chefe e alvo de assassinos renegados.
+Pericolo explica que, dois meses antes, a mãe de Trish , Donatella, morreu dois dias depois de encomendar uma busca independente por Solid Naso, a falsa identidade do Chefe. Membros da Passione souberam desses eventos, e o Chefe ordenou que Pericolo encontrasse e escondesse Trish, revelando ser seu pai. Logo, traidores dentro da gangue começaram uma tentativa de sequestrá-la, visando derrubar o Chefe. Pericolo informa que a missão de Bucciarati durou uma semana, explicando que o Chefe está tentando identificar seus perseguidores e que, assim como Polpo, os traidores são usuários de Stand . Em outro lugar, um desses traidores fica sabendo, por mensagem instantânea, da morte de Polpo, concluindo que sua missão deve ter sido repassada para outro Operativo e usuário de Stand.
+
+Mais tarde, Narancia leva mantimentos e itens solicitados por Trish de volta ao esconderijo do grupo. No carro preparado por Fugo , Formaggio aparece, atacando Narancia com seu Stand, Little Feet . Narancia revida com seu próprio Stand , Aerosmith , um avião de caça em miniatura, enquanto Formaggio deduz que o grupo de Bucciarati está escondendo Trish. Por pouco não sendo atingido por Formaggio, Narancia se vê encolhendo. O passado conturbado de Narancia e as circunstâncias de seu recrutamento na Passione são detalhados.
+
+
+Narancia deve duelar com o primeiro assassino: Formaggio
+Segue-se uma luta entre um Formaggio encolhido e um Narancia também encolhido. Narancia é derrotado; e a história do grupo de assassinos traidores de Formaggio é contada, incluindo o relato das mortes de Sorbet e Gelato . Formaggio sugere que o Stand de Trish representa uma pista sobre a identidade do Chefe. Encurralado, Narancia destrói seu carro, ferindo Formaggio e removendo o efeito de Little Feet sobre ele. Quando Formaggio tenta escapar, Narancia bloqueia todas as rotas de fuga, provocando um incêndio na rua inteira, finalmente derrotando-o em combate corpo a corpo.
+
+O CAMINHO PARA VENEZA
+TREM EXPRESSO PARA FLORENÇA
+Artigo principal: Homem no Espelho e Névoa Roxa (Arco da História)
+Artigo principal: Trem Expresso para Florença (Arco da História)
+Artigo principal: The Grateful Dead (Arco Narrativo)
+Bucciarati e a turma recebem uma mensagem do Chefe por e-mail, pedindo que encontrem uma "chave" que lhes garantirá passagem segura até o destino. Bucciarati, Narancia e Mista ficam para trás para proteger Trish, enquanto Giorno , Abbacchio e Fugo vão até as ruínas de Pompeia para recuperar a chave. Lá, Fugo avista uma figura estranha em um espelho que Giorno e Abbacchio não conseguem ver.
+
+
+Giorno, Fugo e Abbacchio são emboscados pelo Homem no Espelho
+A figura no espelho revela-se ser Illuso , um membro da La Squadra Esecuzioni . Seu Stand , Man in the Mirror , aprisiona Fugo em um mundo espelhado, deixando para trás o violento Stand de Fugo, Purple Haze . Quando Abbacchio abandona Giorno para pegar a chave, ele também é confrontado por Illuso e fica parcialmente preso no mundo espelhado. A decadência de Abbacchio, da polícia para o crime, também é narrada, com um caso que leva à morte de seu parceiro.
+
+Abbacchio corta a própria mão para que Moody Blues possa entregar a chave a Giorno. Illuso ataca Giorno, apenas para descobrir que ele trouxe o vírus da Névoa Púrpura consigo. Illuso tenta escapar, mas é capturado pela própria Névoa Púrpura e morto. Giorno então toma uma vacina de uma cobra criada por Gold Experience . Fugo deposita sua fé em Giorno ao ver suas ações calculadas.
+
+Mais tarde, o grupo examinou a chave e viu que havia instruções adicionais escritas nela: eles deveriam ir imediatamente para Veneza de trem. Antes de embarcar em um trem para Florença, conforme as instruções do Chefe, Bucciarati descobre que a chave se encaixa nas costas de uma tartaruga. Essa tartaruga, chamada Coco Jumbo , é uma usuária de Stand que permite que toda a turma encolha e entre em um pequeno cômodo mobiliado dentro de seu corpo. A turma embarca no trem escondida dentro de Coco Jumbo.
+
+
+Prosciutto e Pesci atacam o esconderijo do Time Bucciarati
+No entanto, os assassinos parceiros Pesci e Prosciutto também embarcam no trem em busca de Trish. Incapaz de localizar a gangue de Bucciarati, Prosciutto usa seu Stand, The Grateful Dead, para fazer todos a bordo do trem envelhecerem. Felizmente, Giorno descobre que manter a temperatura corporal mais baixa retarda o envelhecimento (essa "brecha" tinha como objetivo impedir que Trish envelhecesse muito rápido). Equipado com alguns cubos de gelo, Mista sai da tartaruga e quase mata Pesci, apesar de seu Beach Boy , mas é emboscado por Prosciutto, que quase o mata. O Número 6 dos Sex Pistols vai avisar Bucciarati, permitindo que ele enfrente os assassinos. Bucciarati pula do trem levando Prosciutto com ele e consegue fazê-lo cair no chão enquanto ele se agarra ao gancho do Beach Boy.
+
+Prosciutto é esmagado pela maquinaria do trem, mas mantém seu Stand, o que inspira Pesci e permite que ele lide com Beach Boy com muito mais habilidade do que antes. Escondido em um vagão, Bucciarati é forçado a cortar o próprio coração para evitar o gancho de Beach Boy e quase morre, mas o assassino desiste e faz o trem parar. Após um rápido confronto, Bucciarati derrota Pesci enquanto Prosciutto morre devido aos ferimentos. No entanto, é mostrado que Prosciutto pediu reforços. O grupo não consegue mais viajar de trem. Trish revela a Bucciarati que consegue ver Stands.
+
+NA ESTRADA
+Artigo principal: Baby Face (Arco da História)
+
+Dia de Batalhas de Caras de Bebê
+Melone , membro da La Squadra Esecuzioni , chega ao local das mortes de Pesci e Prosciutto e coleta uma amostra do DNA de Bucciarati . Usando essa amostra e seu Stand , Baby Face , Melone "engravida" uma jovem impulsiva a bordo do trem para "dar à luz" um Stand remoto que perseguirá Bucciarati. O grupo está roubando um carro quando Baby Face os alcança. Capturando e incapacitando Trish e Bucciarati, Baby Face usa sua habilidade de cortar cubos de objetos e rouba um pedaço da garganta, do pé e do olho de Giorno .
+
+Giorno quase morre, mas felizmente se inspira para usar seu poder e criar órgãos individuais. Giorno confronta Baby Face mais uma vez após ser aparentemente ferido mortalmente. Depois de uma tensa troca de farpas entre os dois, Baby Face se cansa de seguir os conselhos de Melone e tenta atacar seu inimigo de frente, permitindo que Giorno o engane e o derrote facilmente, fundindo-o à motocicleta de Melone e explodindo-a. Um pedaço de Baby Face (transformado em uma cobra venenosa pelo Gold Experience ) retorna a Melone e o morde, matando-o enquanto ele está ao telefone com outro membro da equipe que está perseguindo o Time Bucciarati.
+
+Os protagonistas roubam um carro com sucesso e recebem uma mensagem do Chefe através do Moody Blues de Abbacchio . Nessa imagem residual criada pelo Stand , Pericolo revela a localização de um OA-DISC que a gangue precisa encontrar em Veneza antes de tirar a própria vida.
+
+VENEZA
+Artigo principal: Álbum Branco (Arco Narrativo)
+Artigo principal: As últimas ordens do chefe
+O passado de Mista é revelado: seu talento para atirar foi notado por Bucciarati , que o fez entrar para a gangue em troca de ser libertado sob fiança de uma pena de vinte anos de prisão.
+
+
+Ghiaccio possui um poder criogênico incrivelmente defensivo e letal.
+Giorno e Mista dirigem juntos o carro roubado até a estação de trem para pegar o disco. No entanto, eles logo são atacados por Ghiaccio , cujo Álbum Branco pode congelar objetos. Revestido por uma espessa armadura de gelo, Ghiaccio sabota o carro com o frio intenso e, apesar dos esforços de Giorno e Mista, eles são jogados no mar. Giorno é preso, mas Mista continua a luta; o pistoleiro então descobre a fraqueza do Álbum Branco: um orifício de respiração perto do pescoço do disco.
+
+Mista e Giorno unem forças para superar as defesas do White Album. Com a coragem recém-adquirida por Giorno, Mista consegue forçar Ghiaccio a subir em um poste quebrado, perto do buraco em seu Stand , antes de quase morrer. Giorno os alcança e Ghiaccio finalmente é derrotado, sendo chutado repetidamente por Gold Experience até que seu pescoço seja completamente perfurado. Ao testemunhar a poderosa determinação de Giorno, Mista deposita sua fé nele. Giorno então recupera o disco e cura Mista, enquanto o resto da equipe se junta a eles.
+
+Bucciarati consulta o disco, que contém a última ordem do Chefe para a missão da equipe. Eles devem ir à Ilha de San Giorgio Maggiore, e um dos membros acompanhará Trish sozinho até o campanário no topo da igreja e usará um elevador para levá-la até o Chefe. Bucciarati se oferece para acompanhar Trish. No elevador, Trish expressa seu medo de encontrar seu pai distante, mas Bucciarati a tranquiliza, afirmando o amor dele. De repente, Bucciarati percebe que está segurando a mão decepada de Trish e lentamente compreende, com horror, que o Chefe queria que Trish fosse levada até ele para que ele mesmo a matasse.
+
+ENFRENTANDO O CHEFE E O REI CARMESIM
+Artigo principal: O Mistério do King Crimson (Arco da História)
+Artigo principal: O "G" em Coragem
+
+O Chefe fere mortalmente Bucciarati, que desertou.
+O passado de Bucciarati é revelado. Seu pai foi gravemente ferido por traficantes de drogas e Bucciarati os matou em vingança aos 12 anos. O jovem Bucciarati foi forçado a se juntar à Passione para se proteger, e gradualmente se sentiu cada vez mais dividido à medida que a própria Passione começou a se envolver com o tráfico de drogas que ele desprezava. Ferir Trish leva Bucciarati a se rebelar contra o Chefe , e ele o persegue pelo poço do elevador.
+
+Bucciarati rastreia o Chefe até o porão, e uma luta se inicia. O Chefe revela seu Stand, King Crimson , e sua poderosa habilidade de apagar o tempo. Dominado pelo poder de King Crimson, Bucciarati é fatalmente ferido, enquanto o Chefe permanece ileso e completamente derrotado. A ajuda de Gold Experience e Coco Jumbo lhe permite escapar com Trish e se reagrupar com Giorno e o resto de sua gangue. Sem querer arriscar se revelar, o Chefe vai embora, jurando matar os traidores. Giorno tenta curar Bucciarati, aparentemente sem sucesso, antes que ele acorde abruptamente.
+
+Bucciarati anuncia posteriormente à sua equipe que traiu oficialmente o Chefe.
+
+
+Fugo observa seus antigos companheiros partirem de barco.
+Inicialmente assustados, os companheiros de equipe de Bucciarati se juntam à sua causa, com exceção de Fugo , que fica para trás por medo de se tornar um alvo enquanto o resto da equipe parte no barco.
+
+Ao mesmo tempo, Giorno descobre que Bucciarati não sente mais dor nem sangra, e está estranhamente frio ao toque.
+
+O CAMINHO PARA A SARDENHA
+Artigo principal: Confronto e Talking Head (Arco da História)
+Artigo principal: Notorious BIG (Arco da História)
+Artigo principal: Spice Girl (Arco da História)
+
+Narancia enfrenta os primeiros membros da guarda de elite: Tizzano e Squalo.
+Ainda em Veneza, os companheiros de Giorno discutem como derrotar o Chefe . Trish acorda e revela que sua mãe encontrou o Chefe na Sardenha, onde puderam obter informações sobre ele.
+
+Narancia é então atacado pela dupla Tizzano e Squalo . O poder da Cabeça Falante de Tizzano impede Narancia de dizer ou comunicar a verdade, atraindo o grupo para perto de corpos d'água para que o poder do Choque de Squalo possa atacá-los. Giorno descobre a farsa, mas é derrotado pelos inimigos. Mesmo assim, Giorno aconselha Narancia a rastrear os usuários de Stand, usando a si mesmo como isca. Narancia consegue descobrir onde Tizzano e Squalo estão escondidos e os mata em um combate direto. A ajuda de Giorno conquista a confiança de Narancia.
+
+A gangue então deixa Veneza em busca de um avião. No aeroporto, eles são confrontados por Carne enquanto tentam roubar uma aeronave. No entanto, ele é prontamente morto por Mista , que revela seu Stand, Notorious BIG , com relativa facilidade.
+
+
+Os heróis em um avião com Notorious BIG, um Stand automático e invencível
+Durante o voo, Notorious BIG ataca a gangue e revela-se rápido, forte e, acima de tudo, invencível, já que não possui mais um usuário. Mista e Narancia ficam gravemente feridos, e Giorno amputa ambas as mãos para se livrar do Stand inimigo, agora incapaz de se curar. Sozinha na cabine, Trish percebe que Notorious BIG ainda está no avião. Além disso, ela vê que Giorno deixou um broche do qual uma nova mão está crescendo e decide protegê-lo. A pressão permite que Trish desperte Spice Girl , que pode amolecer as coisas e torná-las indestrutíveis. Com a ajuda de Spice Girl, Trish consegue chegar à cabine de comando com a nova mão de Giorno. Para se livrar do invencível Notorious BIG, Trish também destrói o avião e joga o Stand inimigo no mar.
+
+Enquanto isso, em Veneza, o Chefe descobre que uma foto o liga à Sardenha, mais especificamente a um local chamado Costa Esmeralda. Ele decide então ir à Sardenha para impedir que a banda Moody Blues, de Abbacchio , copie seu rosto.
+
+NA SARDENHA
+Artigo principal: Meu nome é Doppio (Arco da história)
+Artigo principal: King Crimson vs. Metallica (Arco Narrativo)
+Artigo principal: Pronto! Ao telefone (Arco da história)
+Um jovem chamado Vinegar Doppio é confrontado por um vidente em um beco, que adivinha o passado de Doppio. Provocado pela insistência do vidente e pela precisão de suas previsões sobre o passado e o futuro de Doppio, este o ataca enquanto se transforma em um indivíduo alto e desconhecido. O tal homem tortura sua vítima para que ela adivinhe quem é o líder da Squadra Esecuzioni, Risotto Nero, antes de matá-lo, revelando que seu Stand é ninguém menos que King Crimson . Das sombras do beco emerge Doppio.
+
+
+Doppio luta contra o misterioso Risotto Nero.
+Mais tarde, Doppio para perto de La Costa Smeralda, revelando que se comunica com o Chefe da Passione imitando uma ligação telefônica com objetos comuns. O Chefe o avisa que Risotto está observando Doppio naquele momento. Nero confronta Doppio e o interroga sobre o motivo de sua presença ali. Ao perceberem a presença de Aerosmith , Nero deduz que Doppio é um usuário de Stand , e uma luta começa entre Doppio, aconselhado pelo Chefe, e Risotto. Apesar do Epitáfio de Doppio, que pode prever o futuro, Risotto o encurrala constantemente, mas no último instante é gravemente ferido por Aerosmith, atraído para a batalha por Doppio.
+
+
+Abbacchio morre, mas a equipe obtém uma pista sobre a identidade do Chefe.
+Doppio se transforma no Chefe e derrota Risotto. Apesar de estar enfraquecido, o Chefe ainda consegue escapar de Bucciarati e Narancia . Enquanto isso, Abbacchio está retrocedendo o tempo perto de um pilar de pedra para recriar o rosto do Chefe. No entanto, ele é enganado e acaba ajudando um grupo de crianças, e o Chefe no corpo de Doppio faz com que King Crimson o mate. Abbacchio morre, chocando toda a equipe, mas seu sacrifício não é em vão, pois Giorno descobre um negativo do rosto do Chefe e impressões digitais impressas na pedra próxima. Moody Blues retrocedeu o tempo o suficiente e deixou isso como legado de Abbacchio.
+
+A gangue investiga o Chefe sem sucesso, mas a investigação é notada por um terceiro, que os contata e propõe um encontro em Roma para receber uma Flecha , o artefato que esconde um poder capaz de derrotar a manipulação temporal de King Crimson. A gangue também descobre o nome do Chefe: Diavolo .
+
+Um flashback revela as origens dos Arrows e dos Stands. Diavolo, observando o grupo à distância, desconfia de sua determinação inabalável. Ele então ordena que Doppio siga o grupo até Roma e convoque a dupla de agentes Cioccolata e Secco para ajudá-los a eliminar a equipe. Ao chegarem a uma vila litorânea, o grupo descobre que está sendo atacado por um estranho fungo.
+
+O CAMINHO PARA ROMA
+Artigo principal: "Green Day" e "Oasis" (Arco Narrativo)
+
+Cioccolata e Secco surgem para matar os heróis.
+No avião em direção a Roma, Diavolo revela o passado horrível de Cioccolata para Doppio .
+
+Quando Narancia se afasta do mofo, seu crescimento se acelera ainda mais, levando a gangue a deduzir que o mofo ataca as pessoas quando elas descem. Cioccolata e Secco são revelados filmando a gangue à distância. Com muita dificuldade, a gangue consegue roubar um carro. Bucciarati finalmente revela que está morto-vivo desde seu primeiro confronto com o Chefe. Ele explora sua imunidade ao mofo devorador de vida e nocauteia Secco, cujo Oásis lhe permite nadar no subsolo e o protege.
+
+A caminho de Roma, a gangue percebe que o Green Day de Cioccolata espalhou seu mofo pela cidade. Vendo que Cioccolata está operando de um helicóptero e Secco se lançando às ruas para enfrentá-los de frente, Giorno e Mista imobilizam o helicóptero no topo de uma torre, combinando suas habilidades, e partem para confrontar o doutor louco enquanto Bucciarati cuida de Secco. No topo da torre, Cioccolata quase mata Mista, mas Giorno consegue derrotá-lo após uma longa luta. Contudo, Cioccolata ouviu dizer que a gangue está indo para o Coliseu em busca de um poder invencível e informou Secco antes de sua morte.
+
+Nas ruas, Bucciarati é fisicamente derrotado por Secco. A luta se transforma em uma corrida em direção ao Coliseu, e o terceiro envolvido acaba sendo revelado como Jean Pierre Polnareff . Quando Bucciarati ensurdece Secco, comprometendo sua capacidade de luta, Secco é forçado a fazer Doppio de refém, sem que ele perceba. Bucciarati derrota Secco rapidamente sem ferir Doppio, mas desmaia, aparentemente por ter atingido seu limite. Sem saber quem é Doppio, Bucciarati aceita sua ajuda, permitindo que o Chefe se aproxime do objetivo da equipe.
+
+BATALHA FINAL CONTRA DIAVOLO
+Artigo principal: Seu nome é Diavolo (Arco da história)
+Artigo principal: O Réquiem Toca Silenciosamente (Arco Narrativo)
+Artigo principal: Diavolo emerge (Arco da história)
+
+O diabo revelou
+Guiando um Bucciarati ferido em direção ao Coliseu , Doppio descobre que Bucciarati é, na verdade, um morto-vivo e só consegue sentir as almas das pessoas. Diavolo então usa a semelhança da alma de Bucciarati com a de Trish a seu favor e ganha sua confiança. Os dois se esgueiram pelo resto do grupo, todos presentes e aguardando para entrar no Coliseu. Partes do misterioso passado de Diavolo são reveladas, e enquanto Bucciarati e Doppio confrontam Polnareff à distância, Polnareff também é envolvido em sua investigação sobre as Flechas na Itália, o que leva a uma luta onde Diavolo o debilita gravemente e o atira de um penhasco. Quando Polnareff reaparece, Diavolo entra em ação.
+
+Diavolo emerge de Doppio e confronta Polnareff, derrotando-o facilmente graças ao King Crimson . Encurralado, Polnareff perfura Silver Chariot com a Flecha , mas é morto em seguida. Silver Chariot então passa por uma intensa transformação no momento em que o Time Bucciarati entra. Transformando-se em Chariot Requiem , o novo Stand força todos em Roma a dormir e toma a Flecha.
+
+Ao acordarem, o grupo lentamente percebe que suas almas foram trocadas de corpos. Narancia trocou de corpo com Giorno , e Mista com Trish. Polnareff trocou sua alma com Coco Jumbo e, portanto, continua vivendo como a tartaruga. Ele revela que um Stand perfurado pela Flecha pode se transformar em Requiem sob as condições certas, ganhando poderes metafísicos superiores até mesmo à capacidade de Diavolo de eliminar o tempo, mas a Flecha é protegida por Chariot Requiem, que faz com que os Stands se voltem contra seus usuários caso pensem em tomá-la. O grupo se une a Bucciarati no corpo de Diavolo e, assim, mata quem estiver no corpo de Bucciarati. No entanto, o tempo é apagado e Narancia é morto, chocando a todos. Assim, Polnareff deduz que Diavolo possui dupla personalidade e que ainda está vagando por aí enquanto a outra personalidade foi eliminada.
+
+Nas ruas, fica claro que King Crimson está por perto. O grupo percebe que Diavolo está possuindo um deles, mas antes que possam confirmar qualquer suspeita, King Crimson nocauteia Giorno e assume o controle do corpo de Mista, onde estava hospedado. Diavolo então corre rapidamente em direção a Chariot Requiem. Graças à sua mente astuta e à previsão de King Crimson, ele evita todos os ataques e derrota Chariot Requiem, quase tomando a Flecha para si.
+
+No entanto, a Flecha atravessa a mão dele enquanto Bucciarati consegue destruir completamente o Chariot Requiem e todas as almas são forçadas a retornar aos seus corpos originais, salvando Trish e mantendo a Flecha fora do alcance de Diavolo. O próprio Bucciarati ascende ao Céu, após uma breve, porém emocionante despedida com Giorno.
+
+Giorno, com uma determinação renovada, pega a Ponta de Flecha em suas mãos.
+
+RÉQUIEM DA EXPERIÊNCIA OURO
+Artigo principal: Gold Experience Requiem (Arco Narrativo)
+Diavolo decide confrontar Giorno , prevendo que a Flecha o rejeitaria por ser "indigno", e ataca Gold Experience enquanto Giorno perfura seu Stand com a Flecha, sem efeito aparente. King Crimson esmaga o rosto de Gold Experience, revelando algo por baixo.
+
+
+Giorno desperta Gold Experience Requiem
+Enquanto King Crimson ataca Gold Experience mais uma vez, Diavolo percebe que o Stand não passa de um amontoado de pele trocada. Ele olha para cima e vê Giorno com um Stand novinho em folha: Gold Experience Requiem . A princípio, Gold Experience Requiem não demonstra nada particularmente impressionante, então Diavolo apaga o tempo e parte para o ataque final contra Giorno, como Epitaph havia previsto. Contudo, antes que ele pudesse desferir o golpe final, o tempo apagado é restaurado. O próprio Gold Experience Requiem se dirige a Diavolo e revela sua habilidade de zerar qualquer ação ou processo, o que torna o poder de King Crimson inútil. Confuso e impotente, Diavolo não consegue impedir que Gold Experience Requiem o esmague violentamente no Tibre.
+
+Embora emerja da água, Diavolo logo descobre que King Crimson foi destruído e que ele próprio está preso em um ciclo de morte sem fim, morrendo repetidamente, mas nunca alcançando o fim de sua agonia. E assim chega ao fim o reinado de terror de Diavolo.
+
+EPÍLOGO
+Artigo principal: Escravos Adormecidos (Arco da História)
+Situado antes dos eventos de A Chegada de Bucciarati , o epílogo centra-se em Bucciarati e nos outros a ajudarem o dono de uma floricultura a descobrir a verdade por detrás da morte da sua filha.
+
+
+Giorno se torna o chefe.
+Mista e Bucciarati vão investigar o suspeito do assassinato, e Mista percebe uma pedra redonda seguindo Bucciarati. Ao confrontar Scolippi , o escultor revela que seus Rolling Stones perseguem pessoas destinadas a uma morte violenta e as matam preventivamente, levando Mista a tentar destruí-la. Ele aparentemente consegue, mas a poeira restante se molda em Bucciarati, Abbacchio e Narancia , revelando que eles estavam destinados a morrer durante a jornada após a partida do grupo. Scolippi reza para que o sofrimento inevitável deles seja seguido por esperança.
+
+De volta ao presente, Trish e Mista vão felizes ao Coliseu , onde construíram uma nova amizade. Atrás deles, Giorno jura proteger a Ponta de Flecha , pois a vê como o legado dos sacrifícios de seus companheiros, e a coloca no corpo de Coco Jumbo antes de alcançar Mista e Trish.
+
+A cena termina com Giorno se tornando o novo chefe da Passione, enquanto vários homens se curvam diante dele e apertam sua mão.
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

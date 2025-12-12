@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O Sangue Fantasma</title>
+
+<style>
+/* =========================== */
+/* CONFIGURAÇÃO DO BODY        */
+/* =========================== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #00FFFF;
+  text-align: justify;
+
+  /* FUNDO AUTOMÁTICO VERTICAL */
+  background-image: url("TheBloodyPhantom.jpg");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: top center;
+  background-attachment: scroll;
+}
+
+/* =========================== */
+/* BOTÕES                      */
+/* =========================== */
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position: relative;
+  z-index: 10; /* Mantém os botões acima do overlay */
+}
+
+.button1 { background-color: #CC00C0; color: yellow; border: 2px solid #D3D3D3; }
+.button1:hover { background-color: #FFFF00; color: blue; border: 2px solid #FF4500; }
+
+.button2 { background-color: red; color: #8B008B; border: 2px solid #DEB887; }
+.button2:hover { background-color: #FFFF00; color: #00BF00; border: 2px solid #9400D3; }
+
+.button3 { background-color: #F8C54B; color: green; border: 2px solid #D3D3D3; }
+.button3:hover { background-color: #FF00FF; color: black; border: 2px solid #FFD700; }
+
+.button4 { background-color: #FFC0CB; color: Yellow; border: 4px solid #9932CC; }
+.button4:hover { background-color: #D1EEF0; color: #3B4369; border: 4px solid #F2B9C5; }
+
+.button5 { background-color: #FF0000; color: pink; border: 2px solid #D3D3D3; }
+.button5:hover { background-color: #FFF39F; color: #FF69B4; border: 2px solid #FF813B; }
+
+.button6 { background-color: #000000; color: #CCCC00; border: 6px solid white; }
+.button6:hover { background-color: #2CC4EA; color: #7FFF00; border: 0px solid red; }
+
+.button7 { background-color: #b493ff; color: red; border: 2px solid pink; }
+.button7:hover { background-color: #ff70c8; color: #BFE7FF; border: 2px solid yellow; }
+
+.button8 { background-color: #8B0000; color: purple; border: 2px solid #FFFF00; }
+.button8:hover { background-color: #89CFEF; color: white; border: 2px solid blue; }
+
+.button9 { background-color: #32CD32; color: gray; border: 2px solid white; }
+.button9:hover { background-color: white; color: #DCDCDC; border: 2px solid #0000CD; }
+
+.button10 { background-color: #000000; color: blue; border: 2px solid red; }
+.button10:hover { background-color: #CC00CC; color: black; border: 2px wavy red; }
+
+/* =========================== */
+/* TIME STOP EFFECT            */
+/* =========================== */
+.timestop-freeze {
+  filter: grayscale(100%) brightness(40%);
+  pointer-events: none;
+  transition: filter 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Vibração Pucci */
+.vibrate {
+  animation: vibrar 0.15s infinite linear;
+}
+
+@keyframes vibrar {
+  0% { transform: translate(1px, 1px); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+/* Overlay */
+.timestop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.85);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.timestop-active {
+  opacity: 1;
+}
+
+.texto01 {
+      font-family: "Times New Roman", serif;
+    }
+
+/* =========================== */
+/* IMAGENS                     */
+/* =========================== */
+.JOJO-img {
+  float: right;
+  max-width: 45%;
+  height: auto;
+  border: 5px solid #FFD700;
+  border-radius: 8px;
+  margin-left: 20px; /* afastar o texto */
+  margin-bottom: 10px; /* opcional */
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="timestop-overlay" id="timestop"></div>
+
+<div class="row">
+<a href="O Sangue Fantasma.html" class="button button1">Parte 1: Phantom Blood</a>
+<a href="A Tendência De Batalha.html" class="button button2">Parte 2: Battle Tendency</a>
+<a href="Os Cruzados Do Pó Estelar.html" class="button button3">Parte 3: Stardust Crusaders</a>
+<a href="O Diamante É Inquebrável.html" class="button button4">Parte 4: Diamond Is Unbreakable</a>
+<a href="O Vento Dourado.html" class="button button5">Parte 5: Vento Aureo</a>
+<a href="O Oceano De Pedra.html" class="button button6">Parte 6: Stone Ocean</a>
+<a href="A Corrida Da Bola De Aço.html" class="button button7">Parte 7: Steel Ball Run</a>
+<a href="O JoJo Leão.html" class="button button8">Parte 8: JoJolion</a>
+<a href="As JoJo Terras.html" class="button button9">Parte 9: JoJolands</a>
+</div>
+
+<script>
+const button3 = document.querySelector(".button3");
+const button6 = document.querySelector(".button6");
+const overlay = document.getElementById("timestop");
+const allButtons = document.querySelectorAll(".button");
+
+button3.addEventListener("mouseenter", () => {
+  overlay.classList.add("timestop-active");
+  allButtons.forEach(btn => {
+    if (btn !== button3 && btn !== button6) {
+      btn.classList.add("timestop-freeze");
+    }
+  });
+
+  button6.classList.add("vibrate");
+});
+
+button3.addEventListener("mouseleave", () => {
+  overlay.classList.remove("timestop-active");
+  allButtons.forEach(btn => {
+    btn.classList.remove("timestop-freeze");
+  });
+
+  button6.classList.remove("vibrate");
+});
+</script>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+Este trechos foram pegos de uma mistura de sites mas principalmente do JoJoWiki.com.
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="texto01">
+<br><b>PRÓLOGO</b><br>
+Artigo principal: Prólogo<br>
+<p>
+<img class="JOJO-img" src="SACRIFÍCIOSACRIFÍCIO.png" alt="Oops"><br>
+</p>
+<p>Entre os séculos XII e XVI, um chefe asteca usando uma máscara de pedra mancha sua máscara com o sangue de uma jovem mulher, como parte de um sacrifício humano de uma tribo asteca . Isso faz com que vários espinhos brotem da máscara, perfurando o crânio do homem sem causar ferimentos graves. O homem afirma ter alcançado a vida eterna, demonstrando sua habilidade de sugar o sangue de outro membro da tribo com o dedo, bem como sua força sobre-humana. É revelado que essa tribo tentou dominar o mundo, mas desapareceu por razões desconhecidas.</p>
+<br><br>
+<p>
+<img class="JOJO-img" src="KRAAAAASH.jpg" alt="Oops">
+</p>
+<br>
+Jonathan e Dio se encontram pela primeira vez.<br>
+<p>
+<img class="JOJO-img" src="Mukkate...wait.jpeg" alt="Onde tudo começou...">
+</p>
+<br>
+<p>Em 1880, em Liverpool, Inglaterra, um jovem Jonathan Joestar (conhecido por seus amigos como JoJo) vive pacificamente na rica propriedade de seu pai, George Joestar I. Outro jovem garoto de Londres , Dio Brando , é adotado por eles devido à morte de seu pai, Dario Brando. George acreditava que ele e seu filho pequeno foram resgatados por Dario durante um acidente de diligência no qual sua esposa perdeu a vida; na realidade, Dario estava tentando saquear seus cadáveres. Jonathan tenta fazer amizade com Dio, sem saber de seu plano de quebrar seu espírito através de constantes provocações e ganhar a confiança de George para que ele possa se tornar o único herdeiro da fortuna Joestar.</p>
+<br><br>
+<p>
+<img class="JOJO-img" src="Evilahhmf.jpeg" alt="Why this mf so evil bruh">
+</p>
+<br>
+<b>DIO BRANDO, O INVASOR</b><br>
+<i>Artigo principal: Dio Brando, o Invasor (Arco da História)</i><br>
+<p>
+<img class="JOJO-img" src="BizarreBoxing.jpeg" alt="BOXA NI NARUNJA">
+</p>
+<br>
+<p>Como parte de seu plano, Dio atormenta Jonathan de várias maneiras: ele dá uma joelhada no queixo de seu cachorro Danny, o espanca violentamente em uma luta de boxe e coloca todos os seus amigos contra ele, enquanto se apresenta ao pai de Jonathan como um cavalheiro e aluno melhor do que seu irmão adotivo. Quando Jonathan encontra consolo em um relacionamento com Erina Pendleton, Dio rouba seu primeiro beijo.</p><br>
+<p>
+<img class="JOJO-img" src="ConsentISImportant.jpeg" alt="Creepy mf"><br>
+</p>
+<p>Essa afronta final enfurece Jonathan a ponto de ele confrontar Dio abertamente, dando-lhe forças para derrotá-lo pela primeira vez. Algumas gotas do sangue de Dio caem sobre a Máscara de Pedra, fazendo com que seus espinhos se estendam e a empurrem da parede. Apenas Dio e Jonathan testemunham a ativação da máscara; enquanto o primeiro insiste que não passa de um instrumento de tortura, o jovem Joestar eventualmente começará a pesquisar arqueologia e etnologia para descobrir a história por trás do artefato. Dio aprende com a luta que Jonathan é mais forte do que imaginava; depois de queimar Danny em um incinerador como vingança, ele decide esperar o momento certo e tentar ganhar a confiança de Jonathan.</p>
+<br>
+<p>
+<img class="JOJO-img" src="PoorDanny.jpeg" alt="RIP Danny, all dogs go to Heaven">
+</p>
+<br><br>
+<b>A MÁSCARA DE PEDRA
+UMA CARTA DO PASSADO</b>
+<i>Artigo principal: Uma Carta do Passado (Arco da História)
+Artigo principal: A Máscara de Pedra (Arco da História)</i>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+JoJo descobre que Dio está envenenando seu pai.
+Sete anos depois, em 1888, Jonathan e Dio tornaram-se amigos e confiáveis ​​um para o outro. Ambos se destacaram como alunos brilhantes, próximos da formatura em suas respectivas áreas. Os dois visitam George, que adoeceu nesse meio tempo. Jonathan começa a suspeitar do cuidado excessivo de Dio por ele, certo de que ele tem segundas intenções. Enquanto continua sua pesquisa sobre a Máscara de Pedra, Jonathan descobre a carta escrita por Dario Brando, enviada a George Joestar após sua morte. Na carta, Dario descreve seus sintomas, que são idênticos à misteriosa doença de George. Jonathan confronta Dio, acreditando que Dio deve ter envenenado seu pai e planeja fazer o mesmo com o seu próprio. Jonathan rouba uma dose do remédio de George para testar, e Dio decide se livrar de Jonathan antes de ser descoberto.
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br>
+Dio usa a Máscara de Pedra em si mesmo
+Dio raciocina que, se fizer Jonathan usar a máscara e a ativar com sangue, sua morte será considerada um acidente de pesquisa devido ao seu conhecido interesse no artefato. No entanto, para se certificar do efeito letal da máscara, Dio vai às ruas e a usa em um mendigo bêbado. Para seu horror, os espinhos da máscara não matam seu cobaia, mas o transformam em um vampiro dotado de força sobre-humana e juventude eterna. O vampiro tenta sugar o sangue de Dio, mas Dio é salvo do ataque do monstro quando o sol nasce, fazendo com que ele se desintegre.
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br>
+<p>Ao retornar para casa, ainda abalado pelos eventos recentes, Dio se vê cercado por policiais convocados por Jonathan. Em uma ousada incursão à Rua dos Ogros , Jonathan conseguiu fazer amizade com o honrado criminoso Robert EO Speedwagon e prender o comerciante chinês Wang Chan , que originalmente vendera o veneno para Dio. Embora Dio pareça estar encurralado, ele empunha a Máscara de Pedra e tenta esfaquear Jonathan. George recebe o golpe, mas seu sangue é suficiente para ativar a máscara, e Dio a veste triunfantemente antes de ser abatido pelos policiais.</p>
+
+<b>JUVENTUDE COM DIO</b>
+<i>Artigo principal: Juventude com Dio (Arco da História)</i>
+<p>Com a vida de George chegando ao fim, ele pede a Jonathan que perdoe Dio e o enterre ao lado de seu pai. De repente, Dio massacra os policiais e fere Speedwagon, tendo se transformado em vampiro. Em suas tentativas de matar a criatura aparentemente invulnerável, Jonathan recorre a incendiar a Mansão Joestar , prendendo Dio lá dentro. Com grande dificuldade e impressionantes demonstrações de força, Jonathan consegue empalar o vampiro na Estátua da Deusa do Amor. Embora Speedwagon tema o pior, Jonathan sobrevive ao ser arremessado para fora de uma janela.</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br>
+Após a batalha, Jonathan é hospitalizado. Por acaso, Erina Pendleton se torna sua enfermeira, e os dois reatam o relacionamento. Enquanto isso, Wang Chan vasculha as ruínas da mansão para encontrar e vender a Máscara de Pedra, mas acaba sendo transformado em zumbi por Dio, que sobreviveu à luta com Jonathan.
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br><br>
+<b>PARA O LOTE DO CAVALEIRO DO VENTO
+RIPPLE OVERDRIVE</b>
+<i>Artigo principal: Jack, o Estripador, e Zeppeli, o Estranho (Arco de História)
+Artigo principal: Ripple Overdrive (Arco da História)</i>
+<p>Algum tempo depois do incêndio, Jonathan e Erina encontram Will Anthonio Zeppeli , um barão italiano que utiliza uma energia peculiar chamada Ondulação (波紋, Hamon ) . Zeppeli explica que a Ondulação é uma técnica de artes marciais que permite ao usuário concentrar a energia corporal em outros tipos de energia, incluindo a energia solar, através da respiração adequada. Depois que Zeppeli ensina Jonathan a usar a Ondulação, os dois encontram Wang Chan, que é derrotado pela técnica Soco Zoom de Jonathan, mas consegue escapar.<p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br><br>
+<p>Os dois usuários do Ripple, agora acompanhados por Speedwagon, pegam uma diligência pelo túnel que leva à cidade de Windknight's Lot , para onde Wang Chan fugiu, segundo informações de Speedwagon. No entanto, o grupo logo é atacado por um Jack, o Estripador, zumbificado . Zeppeli consegue ferir Jack, mas ele escapa para um labirinto subterrâneo escondido no túnel. Zeppeli diz a Jonathan para acabar com ele sem derramar uma gota de vinho. Nos túneis, Jonathan aprende a usar o Ripple em conjunto com o copo para sentir a posição do zumbi e o mata com seu Ripple Overdrive.</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br><br>
+<p>O grupo sai do túnel e o Lago do Cavaleiro do Vento surge à vista. De repente, um garoto chamado Poco rouba a bagagem do grupo, forçando Jonathan e Zeppeli a persegui-lo. No entanto, após ser derrubado pela Ondulação de Jonathan, Poco não se lembra de nada do seu encontro com o grupo. Tendo sido atraídos para um cemitério durante a perseguição, o grupo percebe que Dio havia hipnotizado o garoto para usá-lo como uma armadilha. Dio aparece para o grupo, quase totalmente curado de seus ferimentos, e seu exército de zumbis inicia o ataque. Zeppeli ataca Dio, mas descobre com horror que Dio desenvolveu uma técnica de congelamento para neutralizar a Ondulação. Embora Jonathan tente ajudar Zeppeli, ambos são dominados pela habilidade de Dio e arremessados ​​para longe.<p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br>
+<b>OS CAVALEIROS DAS TREVAS</b>
+<i>Artigo principal: Tarkus e o Cavaleiro das Trevas Bruford (Arco de História)
+<p>Artigo principal: Pluck for Tomorrow e o Sucessor (Arco da História)</i>
+<p>Confiante em sua superioridade sobre os usuários da Ondulação, Dio invoca dois zumbis excepcionalmente poderosos: Bruford e Tarkus , cavaleiros lendários que desempenharam papéis fundamentais na disputa de 1565 entre Elizabeth I e Maria Stuart, Rainha da Escócia . Mantendo seu orgulho, Bruford pede a Dio que desafie Jonathan sozinho. Dio, certo de sua vitória, concorda e parte para Windknight's Lot. Com Tarkus impedindo que o grupo interfira, Bruford e Jonathan travam seu duelo. Embora Bruford enfie Jonathan debaixo d'água, Jonathan descobre que tanto a água quanto o metal da espada de Bruford, Luck, conduzem facilmente a Ondulação, e consegue ferir gravemente o cavaleiro.</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br>
+<p>Bruford tenta um último ataque, mas detém sua espada no último instante; revela-se que a Ondulação restaurou sua nobre alma humana. Após descobrir o nome de Jonathan, Bruford lhe confia sua espada, que ele renomeia para Arrancar com seu sangue, antes de sucumbir aos ferimentos e se desintegrar. Tarkus então inicia seu ataque ao grupo, forçando-os a fugir em um planador feito de folhas fundidas pela Ondulação. Enquanto o grupo foge, Zeppeli revela como aprendeu a usar a Ondulação.</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br>
+<p>Zeppeli morre para salvar JoJo
+Tarkus salta repentinamente em direção ao grupo, fazendo com que eles se choquem contra um castelo à beira de um penhasco, que outrora serviu como campo de treinamento para cavaleiros. A força incrível de Tarkus permite que ele não só sobreviva à queda, como também escale a parede em direção ao grupo. Jonathan entra nas ruínas para encontrar um lugar seguro para Poco se esconder, mas se vê preso por uma coleira em volta do pescoço quando a porta se fecha. Tarkus reconhece a Câmara do Dragão de Duas Cabeças e coloca uma coleira em si mesmo para enfrentar Jonathan em um Combate Mortal com Correntes no Pescoço.</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br>
+<p>Jonathan não consegue respirar direito por causa da coleira, o que o impede de usar o Ripple. Enquanto isso, Poco se lembra dos avisos de sua irmã sobre o medo e encontra coragem para entrar sorrateiramente no quarto e abrir a porta por dentro, permitindo a entrada de Zeppeli e Speedwagon. Zeppeli, lembrando-se da profecia de Tonpetty sobre sua morte, se sacrifica para salvar Jonathan e transferir toda a sua energia vital para ele. Fortalecido pela energia de Zeppeli, Jonathan quebra a coleira e derrota Tarkus. Depois, o grupo se despede de Zeppeli, que falece em paz.</p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+<b>A BATALHA SANGRENTA
+OS TRÊS DE UMA TERRA DISTANTE</b>
+<i>Artigo principal: Os Três de uma Terra Distante (Arco da História)</i>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br><br>
+JoJo confronta Dio<br>
+<p>O grupo finalmente chega ao Lote do Cavaleiro do Vento. Um homem chamado Adams aborda Poco por estar acordado tão tarde, apenas para revelar ser um zumbi quando o grupo lhe vira as costas. Jonathan derrota Adams, mas é imediatamente atacado por um homem chamado Dire e sua técnica Ataque Dividido do Trovão. Depois que Jonathan lhe dá uma cabeçada, Dire cessa o ataque e revela que foi convocado por uma carta de Zeppeli, junto com seu mestre Tonpetty e seu discípulo Straizo . O grupo entra no castelo de Dio, onde Jonathan resgata a irmã de Poco do zumbi cobra Doobie antes de confrontar Dio diretamente. Dire se adianta, reivindicando seu direito de vingar Zeppeli antes de Jonathan, por conhecê-lo há muito mais tempo. Dire ataca Dio com sua técnica especial, Ataque Dividido Cruzado do Trovão, mas a técnica de congelamento de Dio estilhaça seu corpo antes que ele possa acertá-lo. Aterrissando em uma tigela de rosas, a cabeça de Dire consegue disparar uma rosa infundida com Ondulação no olho de Dio antes de se estilhaçar completamente. Dio entra em fúria, convocando sua horda de zumbis para atacar o grupo. Quatro zumbis cercam Poco e sua irmã, mas são derrotados por Straizo.</p>
+<br><br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<b>FOGO E GELO</b>
+<i>Artigo principal: Fogo e Gelo, Jonathan e Dio (Arco da História)</i>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br><br>
+<p>A batalha entre Dio e Jonathan começa. Jonathan atira uma chuva de rosas em Dio, move-se para o seu ponto cego e corta a cabeça de Dio com a espada de Bruford, agora chamada Sorte e Coragem. No entanto, Dio revela que congelou a espada, prendendo os braços e as pernas de Jonathan. Dio começa a injetar sua essência zumbi na artéria carótida de Jonathan, mas Jonathan consegue se descongelar com as chamas ao redor e ejeta a essência zumbi de sua corrente sanguínea. Ao incendiar a própria mão, Jonathan consegue acertar Dio em cheio, preenchendo seu corpo com a Ondulação. Dio é arremessado de uma sacada; embora dispare um fluido de alta pressão pelos olhos como último recurso, ele parece ser desintegrado pela Ondulação de Jonathan. Jonathan e o grupo eliminam os zumbis restantes de Dio e destroem a Máscara de Pedra na manhã seguinte, tendo salvado a cidade com sucesso; o grupo permanece alheio ao fato de que Dio conseguiu arrancar a própria cabeça antes que a Ondulação a atingisse e que escapou junto com Wang Chan.</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br><br>
+<b>A ONDA FINAL</b>
+<i>Artigo principal: Fogo e Gelo, Jonathan e Dio (Arco da História)</i>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br><br>
+<i><b>A morte de Jonathan Joestar</b></i>
+<p>Três meses após os eventos de Windknight's Lot, Jonathan se casa com Erina. Os amigos de Jonathan se despedem do casal enquanto embarcam em um navio rumo à América para sua lua de mel. Mas, no meio da viagem, Jonathan avista Wang Chan. Depois de avisar Erina para se esconder em seu quarto, Jonathan persegue Wang Chan até a sala de máquinas, onde é revelado que a cabeça de Dio embarcou secretamente no navio dentro de um caixão especial à prova de explosões . Dio revela a Jonathan que planeja matá-lo e anexar sua própria cabeça ao corpo de Jonathan antes de chegar à América. Dio dispara novamente o ataque de fluido ocular, perfurando o pescoço de Jonathan e o deixando sem ar. Erina chega e testemunha o estado ferido de Jonathan, mas uma horda de zumbis aparece atrás dela. Embora Dio ordene que Wang Chan corte a cabeça de Jonathan, Jonathan usa o último resquício de sua Ripple para destruir a própria cabeça de Wang Chan, fazendo com que seu corpo trave o eixo da hélice do navio e provoque uma explosão.</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br><br>
+<p>Jonathan, ainda mais ferido por estilhaços do motor, implora a Erina que salve um bebê órfão e fuja, apesar de sua própria vontade de ficar com ele. Dio envolve o pescoço de Jonathan com seus tentáculos, mas Jonathan usa os estilhaços para cortar os tentáculos e apunhalá-lo. Jonathan segura a cabeça de Dio em seus braços, refletindo sobre seus destinos entrelaçados. Dio oferece a Jonathan a vida eterna com Erina, apenas para descobrir que Jonathan já morreu devido aos ferimentos. Enquanto Erina se esconde dentro do caixão de Dio, a nave explode com os dois homens dentro.</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+<br><br>
+<p>Erina reflete sobre a vida que Jonathan Joestar viveu. Embora a história jamais conheça os feitos heroicos de Jonathan, Erina decide que seus descendentes, incluindo o filho que carrega no ventre, ouvirão falar da vida que ele viveu. Dois dias depois, Erina é resgatada perto das Ilhas Canárias, encerrando a história da vida de Jonathan, mas dando início a uma nova era de aventuras.</p>
+<br>
+<p>
+<img class="JOJO-img" src="TheGentlemen.jpg" alt="SONO CHI NO SADAME">
+</p>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
+

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Tendência De Batalha</title>
+
+<style>
+/* =========================== */
+/* CONFIGURAÇÃO DO BODY        */
+/* =========================== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #00FF00;
+  text-align: justify;
+
+  /* FUNDO AUTOMÁTICO VERTICAL */
+  background-image: url("TheBattlestTendencies.jpg");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: top center;
+  background-attachment: scroll;
+}
+
+/* =========================== */
+/* BOTÕES                      */
+/* =========================== */
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position: relative;
+  z-index: 10; /* Mantém os botões acima do overlay */
+}
+
+.button1 { background-color: #CC00C0; color: yellow; border: 2px solid #D3D3D3; }
+.button1:hover { background-color: #FFFF00; color: blue; border: 2px solid #FF4500; }
+
+.button2 { background-color: red; color: #8B008B; border: 2px solid #DEB887; }
+.button2:hover { background-color: #FFFF00; color: #00BF00; border: 2px solid #9400D3; }
+
+.button3 { background-color: #F8C54B; color: green; border: 2px solid #D3D3D3; }
+.button3:hover { background-color: #FF00FF; color: black; border: 2px solid #FFD700; }
+
+.button4 { background-color: #FFC0CB; color: Yellow; border: 4px solid #9932CC; }
+.button4:hover { background-color: #D1EEF0; color: #3B4369; border: 4px solid #F2B9C5; }
+
+.button5 { background-color: #FF0000; color: pink; border: 2px solid #D3D3D3; }
+.button5:hover { background-color: #FFF39F; color: #FF69B4; border: 2px solid #FF813B; }
+
+.button6 { background-color: #000000; color: #CCCC00; border: 6px solid white; }
+.button6:hover { background-color: #2CC4EA; color: #7FFF00; border: 0px solid red; }
+
+.button7 { background-color: #b493ff; color: red; border: 2px solid pink; }
+.button7:hover { background-color: #ff70c8; color: #BFE7FF; border: 2px solid yellow; }
+
+.button8 { background-color: #8B0000; color: purple; border: 2px solid #FFFF00; }
+.button8:hover { background-color: #89CFEF; color: white; border: 2px solid blue; }
+
+.button9 { background-color: #32CD32; color: gray; border: 2px solid white; }
+.button9:hover { background-color: white; color: #DCDCDC; border: 2px solid #0000CD; }
+
+.button10 { background-color: #000000; color: blue; border: 2px solid red; }
+.button10:hover { background-color: #CC00CC; color: black; border: 2px wavy red; }
+
+/* =========================== */
+/* TIME STOP EFFECT            */
+/* =========================== */
+.timestop-freeze {
+  filter: grayscale(100%) brightness(40%);
+  pointer-events: none;
+  transition: filter 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Vibração Pucci */
+.vibrate {
+  animation: vibrar 0.15s infinite linear;
+}
+
+@keyframes vibrar {
+  0% { transform: translate(1px, 1px); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+/* Overlay */
+.timestop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.85);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.timestop-active {
+  opacity: 1;
+}
+
+.texto01 {
+      font-family: "Times New Roman", serif;
+    }
+
+/* =========================== */
+/* IMAGENS                     */
+/* =========================== */
+.JOJO-img {
+  float: right;
+  max-width: 45%;
+  height: auto;
+  border: 5px solid #FFD700;
+  border-radius: 8px;
+  margin-left: 20px; /* afastar o texto */
+  margin-bottom: 10px; /* opcional */
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="timestop-overlay" id="timestop"></div>
+
+<div class="row">
+<a href="O Sangue Fantasma.html" class="button button1">Parte 1: Phantom Blood</a>
+<a href="A Tendência De Batalha.html" class="button button2">Parte 2: Battle Tendency</a>
+<a href="Os Cruzados Do Pó Estelar.html" class="button button3">Parte 3: Stardust Crusaders</a>
+<a href="O Diamante É Inquebrável.html" class="button button4">Parte 4: Diamond Is Unbreakable</a>
+<a href="O Vento Dourado.html" class="button button5">Parte 5: Vento Aureo</a>
+<a href="O Oceano De Pedra.html" class="button button6">Parte 6: Stone Ocean</a>
+<a href="A Corrida Da Bola De Aço.html" class="button button7">Parte 7: Steel Ball Run</a>
+<a href="O JoJo Leão.html" class="button button8">Parte 8: JoJolion</a>
+<a href="As JoJo Terras.html" class="button button9">Parte 9: JoJolands</a>
+</div>
+
+<script>
+const button3 = document.querySelector(".button3");
+const button6 = document.querySelector(".button6");
+const overlay = document.getElementById("timestop");
+const allButtons = document.querySelectorAll(".button");
+
+button3.addEventListener("mouseenter", () => {
+  overlay.classList.add("timestop-active");
+  allButtons.forEach(btn => {
+    if (btn !== button3 && btn !== button6) {
+      btn.classList.add("timestop-freeze");
+    }
+  });
+
+  button6.classList.add("vibrate");
+});
+
+button3.addEventListener("mouseleave", () => {
+  overlay.classList.remove("timestop-active");
+  allButtons.forEach(btn => {
+    btn.classList.remove("timestop-freeze");
+  });
+
+  button6.classList.remove("vibrate");
+});
+</script>
+<br><br><p>
+<img class="JOJO-img" src="TheSmartasses.jpg" alt="Tsugini Omae Wa:...?">
+</p><br><br>
+<div class="texto01">
+<H1><p>JOJO DE NOVA YORK</p></H1><br>
+<H2><p>Artigo principal: Joseph Joestar de Nova York (Arco da História)</p><br>
+<p>Artigo principal: Straizo vs. Joseph (Arco da História)</p></H2><br><br>
+
+<p>No inverno de 1938, já um empresário rico, Robert E.O. Speedwagon e sua Fundação Speedwagon descobrem uma pirâmide mexicana onde encontram diversas Máscaras de Pedra, além de um homem incorporado a uma coluna de pedra. Temendo o pior, que o horror que ele e seu velho amigo Jonathan Joestar frustraram 49 anos atrás possa ressurgir, Speedwagon contata Straizo para encontrá-lo no México e pedir sua ajuda para destruir as máscaras e a figura misteriosa antes que ela desperte. Contudo, Straizo mata repentinamente os associados de Speedwagon antes de feri-lo gravemente. Atraído pela jovialidade e vigor que a Máscara de Pedra concedeu a Dio , Straizo usa o sangue derramado para ativar a Máscara e se transforma em um vampiro, explicando que pretende eliminar qualquer um que saiba da existência das Máscaras.</p><br><br>
+
+
+<p><H2>O novo protagonista da série: Joseph Joestar</H2></p><br>
+<p>Enquanto isso, na cidade de Nova York , o neto de Jonathan, Joseph Joestar, derrota dois policiais por agredirem brutalmente um batedor de carteiras chamado Smokey Brown e demonstra sua habilidade de usar a Onda de Ripple . Joseph faz amizade com Smokey e, junto com sua avó, Erina Joestar, acolhe o garoto. Logo depois, Joseph é informado por um mafioso sobre a suposta morte de Speedwagon pelas mãos de Straizo.</p><br><br>
+
+<p>Mais tarde, após o pôr do sol, Joseph é confrontado do lado de fora de um café por um Straizo vampírico que pretende matá-lo antes que ele se torne uma ameaça real. Mas Joseph já esperava o vampiro e, após uma batalha acirrada, Straizo é derrotado. Straizo revela que, depois de se tornar um vampiro, foi forçado a jogar Speedwagon e suas vítimas no rio para impedir que o sangue derramado revivesse a figura na coluna de pedra. O vampiro finalmente se autodestrói ao exalar a Onda de Energia para dentro de si.</p><br><br>
+
+<p><H1>NO MÉXICO</H1></p><br>
+<H2><p>Artigo principal: O Homem do Pilar, Santana (Arco da História)</p></H2><br><br>
+
+<p>José encontrando Santana</p><br>
+<p>Perturbado pelas últimas palavras de Straizo, Joseph viaja para o México e descobre, através de um assassino chamado Donovan , que os nazistas, sob o comando de Rudol von Stroheim , fizeram Speedwagon prisioneiro. Stroheim e suas forças revelam ter extraído o Homem do Pilar e o estão reanimando para fins de pesquisa. Uma vez despertado, o ser, apelidado de "Santana" por Stroheim, demonstra habilidades fantásticas e sobre-humanas, matando a maioria dos presentes. Mas Joseph, que havia se infiltrado na base nazista, intervém.</p><br><br>
+
+<p>A batalha contra o super-humano Santana leva Joseph ao limite, e Stroheim é forçado a detonar uma granada contra o próprio peito para deter a criatura. Mesmo assim, Joseph consegue expor Santana à luz do sol. Após guardar os restos mortais de Santana na filial de Washington da Fundação Speedwagon, Joseph, que descobre através de Stroheim que um trio de Homens do Pilar está adormecido em Roma, é enviado para encontrar um certo aliado.</p><br><br>
+
+<H1><p>NA ITÁLIA</p><br>
+<p>ROMA</p></H1><br>
+<H2><p>Artigo principal: Guerreiros Supremos dos Tempos Antigos (Arco de História)</p></H2><br>
+
+<p><H2>Os Homens do Pilar despertaram</H2></p><br>
+<p>Ao chegar em Roma, Joseph cruza o caminho do contato de Speedwagon na Itália: Caesar Anthonio Zeppeli , neto de Will Anthonio Zeppeli . Os dois jovens não se dão bem, pois Caesar culpa Jonathan pela morte de seu avô e considera a vitória de Joseph contra Santana pura sorte. Sem que eles saibam, os Homens do Pilar já estão despertando sob o Coliseu.</p><br><br>
+
+<p>Joseph, Speedwagon e Caesar chegam à caverna subterrânea onde os Homens do Pilar estão; no entanto, os Homens do Pilar, Wamuu , Esidisi e Kars , já haviam despertado e matado os alemães. Joseph e Caesar confrontam os três Homens do Pilar, mas os três já estão familiarizados com usuários de Ripple e desenvolveram estratégias para combatê-los. Tanto Joseph quanto Caesar são facilmente dominados por Wamuu, embora, quando Wamuu se prepara para desferir um golpe mortal em Joseph, este promete que, com um mês de treinamento, poderá se tornar um adversário digno. Como Wamuu adora batalhar, ele aceita o desafio de Joseph, mas implanta um Anel da Morte na aorta de Joseph para impedi-lo de fugir. Ele explica que o anel se dissolverá em veneno em 33 dias, revelando que o antídoto está dentro de seu piercing labial. Esidisi também coloca seu próprio anel na traqueia de Joseph para selar sua morte, com o antídoto em seu próprio piercing no nariz. O líder dos Homens do Pilar, Kars, dispensa o jogo enquanto o trio parte em busca da Pedra Vermelha de Aja . César logo passa a respeitar José por sua resistência heroica.</p><br><br>
+
+<H1><p>FORMAÇÃO EM VENEZA</p></H1><br>
+<H2><p>Artigo principal: Ripple Teacher Lisa Lisa (Arco da História)</p><br>
+<p>Artigo principal: Modo Chama Esidisi (Arco da História)</p><br>
+<p>Artigo principal: Os Restos Espreitam (Arco Narrativo)</p></H2><br><br>
+
+<H2><p>Lisa Lisa demonstrando a amplificação de energia da Super Aja.</p></H2><br>
+<p>Desejando ensinar Joseph a dominar sua Ondulação, César o leva a Veneza para conhecer sua mentora: a magistral e bela Lisa Lisa . Lisa Lisa, auxiliada por seu servo Loggins e Messina , treina Joseph e César rigorosamente e consegue transformá-los em mestres da Ondulação em três semanas. Perto do fim do treinamento, Lisa Lisa revela a Joseph e César que Kars é quem criou as Máscaras de Pedra, como aquela que causou a morte de seus avôs. Ela também revela que Kars está em busca de uma Pedra Vermelha de Aja perfeita , a Super Aja que ela possui, para aperfeiçoar a Máscara e usá-la para se tornar a Coisa Suprema ( Arutimitto Shīngu , lit. "Forma de vida suprema")A forma de vida suprema: Coisa Suprema.</p><br><br>
+
+<p><H2>José lutando contra Esidisi</H2></p><br>
+<p>Faltando uma semana para que os anéis dentro de Joseph se dissolvam e o matem, Lisa Lisa coloca Joseph e Caesar contra Loggins e Messina, respectivamente, para o teste final. No entanto, quando Joseph chega ao seu destino, descobre que Loggins foi morto por Esidisi, que descobriu a localização da Super Aja. Joseph então luta contra Esidisi, mas a astúcia do Homem do Pilar é páreo para a de Joseph. O guerreiro Ripple ainda consegue usar sua habilidade de mágica e amarra Esidisi com uma corda de lã, desferindo um golpe aparentemente fatal no Homem do Pilar e se livrando do anel de Esidisi.</p><br><br>
+
+<p>Na verdade, Esidisi sobreviveu. Infiltrando-se na ilha de Lisa Lisa e possuindo sua serva Suzi Q, o Homem do Pilar envia o Super Aja para seus aliados através do carteiro. Esidisi ameaça matar Suzi Q, mas Joseph e Caesar cooperam para acabar com ele. Lisa Lisa usa hipnose em Suzi Q e descobre que a Pedra está a bordo de um trem rumo à Suíça. Assim, Joseph, Caesar, Lisa Lisa e Messina partem para interceptar o pacote antes que ele chegue ao seu destino.</p><br><br>
+
+<H1><p>NA SUÍÇA</p><br>
+<p>PRIMEIRAS BATALHAS</p></H1><br>
+<H2><p>Artigo principal: A Unidade de Stroheim Contra-Ataca (Arco da História)</p><br>
+<p>Artigo principal: Kars no Modo Luz (Arco da História)</p><br>
+<p>Artigo principal: César: Um Jovem Solitário (Arco Narrativo)</p></H2><br><br>
+
+<p>Ao chegarem à fronteira suíça, Joseph e seu grupo descobrem que o trem foi parado pela alfândega enquanto os nazistas recuperavam o pacote. O líder nazista, que parece conhecer Joseph, convida o grupo para uma cabana de madeira mais adiante. Mais tarde naquela noite, Kars ataca a cabana para recuperar a Super Aja. O líder nazista, que se revela como Stroheim reconstruído como um ciborgue com o mesmo poder de Santana, é facilmente derrotado. No entanto, Stroheim consegue fazer Kars soltar a Pedra, que está deslizando em direção a um penhasco. Uma luta então se inicia entre Joseph e Kars pela posse da Pedra, terminando com Joseph conseguindo a vitória enquanto Kars é lançado penhasco abaixo. Imperturbável com o que equivale a um pequeno revés, Kars permite que os humanos segurem a Pedra Vermelha por mais um tempo.</p><br><br>
+
+<p>No dia seguinte, em St. Moritz, ao saber que os Homens do Pilar estão hospedados no hotel San Moritz, César planeja emboscar Kars durante o dia, antes do retorno de Wamuu. Mas Joseph se opõe, pois pode ser uma armadilha. Uma luta se inicia, e um César furioso, acompanhado por Messina, decide ir ao hotel sem apoio. Lisa Lisa conta a Joseph sobre o passado trágico de César, tendo presumido que seu pai, Mario, abandonou a família antes de morrer para salvá-lo de ser devorado pelos Homens do Pilar adormecidos. A história convence Joseph a seguir César.</p><br><br>
+
+<H2><p>A última ondulação de César</p></H2><br>
+<p>Contudo, ao chegar ao San Moritz, César e Messina são atacados por Wamuu, que usa correntes de ar úmido para se proteger da luz solar. Wamuu consegue arrastar César para dentro do hotel, mas César o encurrala usando lentes de bolha para direcionar a luz solar para ele. Num momento de fúria, César salta em direção a Wamuu para desferir o golpe final. Mas Wamuu aproveita a fração de segundo em que César bloqueia a luz solar para contra-atacar com uma Tempestade de Areia Divina à queima-roupa, que fere César fatalmente. César é derrotado, mas, num último ato de desafio, rouba o piercing labial de Wamuu para Joseph e o guarda antes que um pedaço do teto o esmague. Wamuu respeita o último gesto de César e a essência de sua luta valente, permitindo que a bolha permaneça para Joseph e Lisa Lisa, que eventualmente chegam e lamentam a morte de César. Os dois decidem se aventurar mais adentro do prédio. Apesar de ter o piercing no lábio de Wamuu, Joseph jura não beber o antídoto até derrotar o Homem do Pilar e vingar César.</p><br><br>
+
+<p><H1>JOJO E LISA LISA VS. WAMUU E CARROS</H1></p><br>
+<p><H2>Artigo principal: O Vento, a Carruagem e Wamuu (Arco da História)</p><br>
+<p>Artigo principal: O laço que une Lisa Lisa e JoJo (Arco da história)</p><br>
+<p>Artigo principal: JoJo: A Ondulação Final (Arco da História)</p></H2><br><br>
+
+<H2><p>José enfrentando o chamado na corrida de carros</p></H2><br>
+<p>Joseph e Lisa Lisa finalmente encontram os Homens do Pilar, mas se veem em grande desvantagem numérica contra suas centenas de lacaios vampiros. Lisa Lisa consegue repelir o ataque com um blefe, dizendo que armou uma bomba-relógio para destruir o Super Aja caso ela e Joseph não consigam retornar, sugerindo duas lutas individuais para resolver a situação. Kars aceita a contragosto; na noite seguinte, Joseph, Lisa Lisa, Wamuu e Kars se encontram na Pedra do Calcanhar de Esqueleto, aos pés do Piz Bernina. Vestindo a bandana de César, Joseph desafia Wamuu para uma corrida de bigas com cavalos vampiros superpoderosos. No fim, apesar de seu oponente arrancar os próprios olhos para obter vantagem, Joseph consegue derrotar Wamuu, cujo corpo é destruído no processo. Joseph presta homenagem a Wamuu, bebendo o antídoto diante de sua cabeça e, em seguida, o saúda. Resta apenas Kars.</p><br><br>
+
+<p>O confronto final entre Lisa Lisa e Kars começa. Inesperadamente, Kars usa uma sósia para distrair Lisa Lisa e a apunhala pelas costas, liberando em seguida seus vampiros contra um Joseph sem fôlego. Tudo parece estar acabado até que um Stroheim aprimorado, os nazistas, Speedwagon e um grupo de agentes da Fundação Speedwagon, além de Smokey, chegam para ajudar Joseph. Enquanto os vampiros estão distraídos, Joseph confronta Kars. O ardiloso Homem do Pilar usa a inconsciente Lisa Lisa como escudo e força Joseph a tentar salvá-la enquanto Kars se prepara para atacar. É nesse momento que se revela que Lisa Lisa é a mãe biológica de Joseph, Elizabeth Joestar.</p><br><br>
+
+<p>Também é explicado que seu marido , pai de Joseph, foi morto pelo último dos soldados zumbis de Dio enquanto se passava por um comandante de alta patente da força aérea, mas quando Elizabeth matou o zumbi, ela foi vista por outro oficial desavisado e forçada a se esconder como fugitiva, adotando o pseudônimo "Lisa Lisa" para sua própria segurança.</p><br><br>
+
+<p>No presente, Joseph consegue enganar Kars e o atinge com a Ondulação, fazendo o Homem do Pilar cair no chão. Os nazistas tentam matar Kars enquanto ele está caído com luzes ultravioleta, mas no último instante, Kars veste uma Máscara de Pedra com a Pedra Vermelha de Aja incrustada. Usando a luz a seu favor, Kars se torna a Coisa Suprema.</p><br><br>
+
+<H1><p>JOJO VS. O SUPREMO</p></H1><br>
+<H2><p>Artigo principal: O Nascimento de Kars, o Super-Ser (Arco da História)</p></H2><br><br>
+
+<p>Kars se torna a Coisa Suprema</p><br>
+<p>A princípio, Kars não parece ter mudado muito, porém, rapidamente demonstra uma incrível habilidade de se transformar em qualquer forma de vida e sua recém-adquirida imunidade ao sol. Em desespero, Joseph planeja uma retirada estratégica para atrair Kars, pilotando um avião para longe da cena.
+Joseph planeja atrair a Coisa Suprema para dentro de um vulcão, mas, quando se aproxima, Kars consegue desativar o avião. Joseph e Stroheim, que estavam escondidos dentro do avião, conseguem atrair Kars para dentro e usam a queda da aeronave para jogá-lo na lava.</p><br><br>
+
+<p>Kars emerge inesperadamente ileso da lava e decepa o braço esquerdo de Joseph com um ataque surpresa. Tanto Joseph quanto Stroheim percebem que não têm esperança de derrotar a Coisa Suprema e aceitam suas mortes. Contudo, quando Kars se prepara para desferir o golpe final em Joseph com um soco imbuído de Ondulação, Joseph usa o Super Aja e potencializa enormemente o golpe de Kars. A onda de energia atravessa a mão de Joseph e atinge o vulcão, que, sob a influência da Ondulação, começa a entrar em erupção, lançando Kars para o espaço. No vazio, Kars não tem como retornar à Terra e um mecanismo de defesa seu é acionado, congelando seu corpo e o impedindo de viajar de volta. Condenado à imortalidade devido aos seus novos poderes, Kars acaba ficando sem cérebro no vácuo infinito do espaço.</p><br><br>
+
+<H1><p>CONCLUSÃO</p></H1><br><br>
+
+<p>Contra todas as expectativas, Joseph sobreviveu à sua aventura.</p><br>
+<p>Semanas depois, o grupo formado por Erina, Lisa Lisa, Messina, Smokey e Speedwagon presta suas homenagens no funeral de Joseph Joestar, que todos acreditavam estar morto. Para surpresa de todos, Joseph reaparece, vivo e bem, sem saber de quem era o funeral que interrompeu. Ao ver seu próprio nome na lápide, ele explica que, após cair do céu, foi parar na Itália, onde foi ajudado por um pescador local. Depois de encontrar e se casar com Suzi Q, ele retornou aos Estados Unidos e aos seus amigos. Infelizmente, Suzi Q se esqueceu de avisar o grupo que Joseph estava vivo, o que causou o funeral. Furioso, Joseph persegue sua esposa pelo cemitério enquanto seus companheiros comemoram sua sobrevivência.</p><br>
+<p>É feito um relato do restante da vida de vários membros importantes do elenco:</p><br><br>
+
+<p>Lisa Lisa, também conhecida como Elizabeth Joestar, revelou sua verdadeira identidade a Joseph antes de se mudar para os Estados Unidos com sua família e se casar com um roteirista de Hollywood em 1948.</p><br>
+<p>Erina Joestar continuou seu trabalho como professora até falecer pacificamente em 1950, cercada por seus amigos e familiares.</p><br>
+<p>Robert EO Speedwagon continuou suas pesquisas filantrópicas nas áreas científica e médica antes de falecer de um ataque cardíaco em 1952; ele nunca se casou.</p><br>
+<p>Apesar da discriminação que enfrentou por ser afro-americano, Smokey Brown formou-se em ciência política na faculdade, antes de se tornar o primeiro prefeito negro de uma cidade em seu estado natal, a Geórgia.</p><br>
+<p>O major Rudol von Stroheim foi morto liderando a retirada alemã na Batalha de Stalingrado em 1943, "um exemplo assustador da ciência alemã que ele sempre defendeu".</p><br>
+<p>Quarenta e oito anos depois, um Joseph idoso é visto no Aeroporto Internacional JFK, chutando o joelho de um japonês que o atingiu acidentalmente com sua bagagem. Joseph expressa sua raiva em relação aos japoneses, explicando que sua própria filha se mudou para o Japão depois de se casar com um japonês e nunca mais voltou; seu próprio neto não o reconhece. A história termina com Joseph embarcando em um avião rumo ao Japão.</p><br>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>

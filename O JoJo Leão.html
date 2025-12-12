@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O JoJo Leão</title>
+
+<style>
+/* =========================== */
+/* CONFIGURAÇÃO DO BODY        */
+/* =========================== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #00FFFF;
+  text-align: justify;
+
+  /* FUNDO AUTOMÁTICO VERTICAL */
+  background-image: url("TheSoftestOfHistory.jpg");
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+  background-position: top center;
+  background-attachment: scroll;
+}
+
+/* =========================== */
+/* BOTÕES                      */
+/* =========================== */
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px; 
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position: relative;
+  z-index: 10; /* Mantém os botões acima do overlay */
+}
+
+.button1 { background-color: #CC00C0; color: yellow; border: 2px solid #D3D3D3; }
+.button1:hover { background-color: #FFFF00; color: blue; border: 2px solid #FF4500; }
+
+.button2 { background-color: red; color: #8B008B; border: 2px solid #DEB887; }
+.button2:hover { background-color: #FFFF00; color: #00BF00; border: 2px solid #9400D3; }
+
+.button3 { background-color: #F8C54B; color: green; border: 2px solid #D3D3D3; }
+.button3:hover { background-color: #FF00FF; color: black; border: 2px solid #FFD700; }
+
+.button4 { background-color: #FFC0CB; color: Yellow; border: 4px solid #9932CC; }
+.button4:hover { background-color: #D1EEF0; color: #3B4369; border: 4px solid #F2B9C5; }
+
+.button5 { background-color: #FF0000; color: pink; border: 2px solid #D3D3D3; }
+.button5:hover { background-color: #FFF39F; color: #FF69B4; border: 2px solid #FF813B; }
+
+.button6 { background-color: #000000; color: #CCCC00; border: 6px solid white; }
+.button6:hover { background-color: #2CC4EA; color: #7FFF00; border: 0px solid red; }
+
+.button7 { background-color: #b493ff; color: red; border: 2px solid pink; }
+.button7:hover { background-color: #ff70c8; color: #BFE7FF; border: 2px solid yellow; }
+
+.button8 { background-color: #8B0000; color: purple; border: 2px solid #FFFF00; }
+.button8:hover { background-color: #89CFEF; color: white; border: 2px solid blue; }
+
+.button9 { background-color: #32CD32; color: gray; border: 2px solid white; }
+.button9:hover { background-color: white; color: #DCDCDC; border: 2px solid #0000CD; }
+
+.button10 { background-color: #000000; color: blue; border: 2px solid red; }
+.button10:hover { background-color: #CC00CC; color: black; border: 2px wavy red; }
+
+/* =========================== */
+/* TIME STOP EFFECT            */
+/* =========================== */
+.timestop-freeze {
+  filter: grayscale(100%) brightness(40%);
+  pointer-events: none;
+  transition: filter 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Vibração Pucci */
+.vibrate {
+  animation: vibrar 0.15s infinite linear;
+}
+
+@keyframes vibrar {
+  0% { transform: translate(1px, 1px); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, 1px); }
+}
+
+/* Overlay */
+.timestop-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.85);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 5;
+}
+
+.timestop-active {
+  opacity: 1;
+}
+
+.texto01 {
+      font-family: "Times New Roman", serif;
+    }
+
+/* =========================== */
+/* IMAGENS                     */
+/* =========================== */
+.JOJO-img {
+  float: right;
+  max-width: 45%;
+  height: auto;
+  border: 5px solid #FFD700;
+  border-radius: 8px;
+  margin-left: 20px; /* afastar o texto */
+  margin-bottom: 10px; /* opcional */
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="timestop-overlay" id="timestop"></div>
+
+<div class="row">
+<a href="O Sangue Fantasma.html" class="button button1">Parte 1: Phantom Blood</a>
+<a href="A Tendência De Batalha.html" class="button button2">Parte 2: Battle Tendency</a>
+<a href="Os Cruzados Do Pó Estelar.html" class="button button3">Parte 3: Stardust Crusaders</a>
+<a href="O Diamante É Inquebrável.html" class="button button4">Parte 4: Diamond Is Unbreakable</a>
+<a href="O Vento Dourado.html" class="button button5">Parte 5: Vento Aureo</a>
+<a href="O Oceano De Pedra.html" class="button button6">Parte 6: Stone Ocean</a>
+<a href="A Corrida Da Bola De Aço.html" class="button button7">Parte 7: Steel Ball Run</a>
+<a href="O JoJo Leão.html" class="button button8">Parte 8: JoJolion</a>
+<a href="As JoJo Terras.html" class="button button9">Parte 9: JoJolands</a>
+</div>
+
+<script>
+const button3 = document.querySelector(".button3");
+const button6 = document.querySelector(".button6");
+const overlay = document.getElementById("timestop");
+const allButtons = document.querySelectorAll(".button");
+
+button3.addEventListener("mouseenter", () => {
+  overlay.classList.add("timestop-active");
+  allButtons.forEach(btn => {
+    if (btn !== button3 && btn !== button6) {
+      btn.classList.add("timestop-freeze");
+    }
+  });
+
+  button6.classList.add("vibrate");
+});
+
+button3.addEventListener("mouseleave", () => {
+  overlay.classList.remove("timestop-active");
+  allButtons.forEach(btn => {
+    btn.classList.remove("timestop-freeze");
+  });
+
+  button6.classList.remove("vibrate");
+});
+</script>
+<p>
+<img class="JOJO-img" src="TheRockers.jpg" alt="Mr. FantastiBolas">
+</p>
+
+<div class="texto01">
+UM HOMEM AMNÉSICO
+DESENTERRANDO
+Artigo principal: Macio e Molhado (Arco da História)
+
+Yasuho encontra um indivíduo misterioso enterrado perto da Muralha dos Olhos.
+Yasuho Hirose , escondendo-se de Joshu Higashikata perto da Muralha dos Olhos em Morioh Town , descobre um homem de boné de marinheiro parcialmente enterrado. Após chamar uma ambulância, Yasuho percebe uma marca de nascença em forma de estrela no ombro dele, cercada por uma mordida recente. Além disso, o homem pergunta seu nome. Depois de retirá-lo do chão, ela percebe que ele está completamente nu, e é nesse momento que Yasuho descobre que ele tem quatro testículos. Uma luta começa entre Joshu e o homem com amnésia, durante a qual uma bolha de sabão sai do ombro do marinheiro e aparentemente faz os olhos de Joshu saltarem das órbitas. O homem desmaia antes de todos serem levados para o hospital.
+
+Na narração, Yasuho explica como os Olhos da Parede surgiram simultaneamente a uma versão do terremoto de Tohoku de 2011. Enormes saliências rochosas, marcadas por longos buracos verticais, erguem-se entre a costa e o continente, bloqueando rodovias, hidrovias, gasodutos e linhas de energia.
+
+A PRIMEIRA PISTA
+
+Macio e molhado parece
+Mais tarde, no hospital, Yasuho reencontra o jovem, que lhe explica que sofre de amnésia. Yasuho se oferece para ajudá-lo e, ao examinarem seu chapéu , aparentemente descobrem sua identidade: Yoshikage Kira . No entanto, Yasuho sente que esse nome não combina com ele e o apelida de "Josuke". A dupla vai até o apartamento de Kira, onde Josuke encontra uma mulher nua na banheira. Yasuho e Josuke tentam perguntar à mulher quem ela é, mas ela não responde. Yasuho encontra um álbum de fotos comprometedor contendo imagens da mulher em uma situação de bondage erótica com alguém que parece ser Josuke. Convencida de que Josuke é um sádico, Yasuho sai desesperada. Além disso, Josuke percebe que está sendo atacado: cada vez que machuca a mão ou o pé, o agressor do apartamento acima controla o membro. Revelando seu Stand Soft & Wet , e com o retorno oportuno de Yasuho, Josuke consegue surpreender seu oponente.
+
+O agressor se apresenta como Ojiro Sasame , um surfista em busca de vingança contra Yoshikage Kira, e confirma que Josuke não é Kira, embora haja uma certa semelhança entre eles. Sasame conta sobre um Kira psicopata que, no passado, por meio de um poder misterioso e sem motivo aparente, o convenceu a comer os próprios dedos. Josuke vê uma foto de Kira perto dos Olhos da Parede e retorna ao local de onde surgiu para descobrir o corpo do verdadeiro Yoshikage Kira, que havia falecido de parada cardíaca três dias antes. Yasuho obtém secretamente os resultados da autópsia e descobre que o cadáver de Kira está sem os dois testículos.
+
+BUSCA DE IDENTIDADE
+A TRILHA DOS HIGASHIKATAS
+Artigo principal: Cama California King (Arco da História)
+Artigo principal: "Paisley Park" e "Born This Way" (Arco da História)
+
+Josuke foi adotado pela família Higashikata.
+Yasuho apresenta Josuke ao chefe da família Higashikata, Norisuke Higashikata IV , dono de uma empresa de importação de frutas herdada de seu avô , Norisuke Higashikata I. Ao receber o nome Higashikata, Josuke é acolhido na casa de Norisuke e instruído a proteger a filha mais nova, Daiya . Enquanto Norisuke o adverte de forma sinistra para que obedeça à sua palavra, Yasuho é escoltado para fora pela empregada da família, Kei Nijimura , e avisado para não retornar.
+
+Assim que todos saem, Daiya começa a flertar com Josuke e decide brincar com ele. Usando sua cama tamanho king da Califórnia , ela rouba uma das poucas memórias de Josuke sempre que ele a mima. Para tornar as coisas justas, ela diz a Josuke que, se ele conseguir fazê-la pisar em sua sombra, as memórias serão devolvidas, embora seu conhecimento e perspicácia tornem a tarefa praticamente impossível. Enquanto isso, Yasuho descobre, por meio de um teste de DNA, que Josuke e Kira são praticamente a mesma pessoa. Josuke acaba enganando Daiya, fazendo-a pisar em sua sombra projetada pela luz de uma geladeira aberta. Josuke decide não guardar rancor e entra no escritório de Norisuke, seguindo um símbolo que viu no pulso de Kira.
+
+Josuke encontra um livro no escritório marcado com o mesmo símbolo: um registro da corrida Steel Ball Run . Na capa, ele encontra a árvore genealógica da família Higashikata e descobre que a filha do primeiro Norisuke Higashikata se casou com Johnny Joestar , um ancestral direto do falecido Yoshikage Kira. A partir da árvore genealógica, Josuke planeja encontrar a única parente viva de Kira: sua mãe, Holy Joestar-Kira . Com a ajuda de Yasuho, Josuke descobre que ela é médica no Hospital Universitário TG local e ambos combinam de se encontrar lá. Eles também descobrem que ela está internada. A caminho do hospital, Josuke percebe que seu GPS está com defeito e que um Stand motociclista o está seguindo, aparecendo repentinamente e atacando com um vento congelante antes de desaparecer tão rápido quanto surgiu.
+
+O GPS acaba se revelando como o Stand nascente de Yasuho , ajudando Josuke contra seu agressor. Percebendo que o inimigo só aparece quando ele "abre algo", Josuke consegue escapar do agressor, encontrar e finalmente derrotar a usuária, Kei Nijimura. Nijimura revela ter uma marca de nascença em forma de estrela e ser a irmã mais nova de Kira. Ela confundiu Josuke com um inimigo e tentou impedi-lo de se aproximar de sua mãe, Holy; como um gesto de boa vontade, Josuke promete ficar longe de Holy, e os dois fazem as pazes.
+
+
+Josuke é uma mistura de dois homens!
+Cientes das propriedades sobrenaturais do solo próximo aos Olhos da Parede, Nijimura e Josuke descobrem que Josuke é uma mistura de dois homens, demonstrando o processo com duas frutas. No entanto, o Stand de Kira não era Soft & Wet, mas sim Killer Queen , deixando a identidade do outro homem um mistério.
+
+Enquanto isso, Yasuho consegue entrar no hospital e encontrar Holy Joestar-Kira, que está delirando, mas a segurança logo a expulsa. Holy observa enquanto vê o Stand de Yasuho, Paisley Park, ativar-se inconscientemente, pensando que talvez ela possa ajudar seu filho. Os poderes de Paisley Park acabam levando Yasuho de volta ao hospital, para um quarto ao lado do de Holy, onde ela vê a extensão de sua misteriosa doença. Ela não consegue distinguir pessoas de objetos, e os médicos notam que faltam vários órgãos vitais e que seu cérebro apresenta cavidades perfeitamente esféricas, mas não há sinais de remoção cirúrgica.
+
+SHAKEDOWN ROAD E JOHNNY JOESTAR
+Artigo principal: "Shakedown Road" (Arco da história)
+Alguns dias depois, Norisuke pede a Joshu que leve Josuke à escola secundária local para ver se ele consegue se matricular. No entanto, o caminho para a escola os leva pela Rua da Extorsão , onde os moradores obrigam Joshu e Josuke a danificar diversos objetos graças a Les Feuilles e os coagiam a pagar quantias cada vez maiores em dinheiro como compensação. Quando o dono de uma loja de animais exige 330.000 ienes como pagamento por uma tartaruga rara morta, Joshu e Josuke, a contragosto, tornam-se mulas para o tráfico de drogas sob o olhar atento de dois policiais.
+
+Josuke e Joshu, separadamente, entendem como a Shakedown Road funciona e a exploram a seu favor. Aparentemente, após pegar o dinheiro e repelir o bandido com seu recém-despertado Stand Nut King Call , Joshu percebe que foi enganado. Na verdade, Josuke realizou outra transação e limpou seu nome perante os policiais, conseguindo também o dinheiro para reembolsar o dono da loja de animais. Posteriormente, Yasuho e Josuke descobrem, respectivamente por meio de pesquisas e da revelação do dono da loja, que um Jizo próximo foi construído como memorial a Johnny Joestar e desvendam as circunstâncias de sua morte.
+
+Johnny e Rina vivendo felizes
+Após a Corrida da Bola de Aço, Johnny casou-se com Rina Higashikata , que conheceu a caminho da Europa. Depois de alguns anos de uma vida feliz, Rina foi acometida por uma doença misteriosa : começou a perder a memória e sua pele se transformou em pedra. Angustiado, Johnny roubou o Cadáver do Santo e o levou para o Japão. Escondendo o Cadáver em um buraco sob um pinheiro, Johnny levou sua família para lá e rezou para que o Cadáver transferisse a doença para longe de sua esposa; Johnny viu com horror que seu filho adoeceu. Finalmente, Johnny absorveu a doença e morreu, com a cabeça esmagada por uma pedra.
+O dono da loja de animais afirma que a história não passa de uma lenda, mas Josuke percebe a ligação entre a misteriosa doença que afligiu Rina e aquela que Holy Joestar sofre atualmente.
+
+Em outro lugar, Yasuho encontra o caminho para o Pinheiro da Meditação, nos fundos da propriedade Higashikata, através de fotos em reportagens que pesquisou. Ela lê sobre um bebê que apareceu na praia próxima em 13 de novembro de 1901, usando um colar. De repente, Yasuho é agarrada por uma mão vinda de dentro da árvore e tateada momentaneamente na escuridão.
+
+A PEGADINHA DE TSURUGI
+Artigo principal: Paper Moon Deception (Arco da História)
+Yasuho se encontra com Tsurugi Higashikata , neto de Norisuke. Tsurugi revela que estão em uma instalação subterrânea usada pela família Higashikata . Tsurugi e Yasuho conversam, e Tsurugi revela que é um garoto que se veste de mulher para frustrar uma maldição familiar. Quando Yasuho exige que ele a deixe ir embora, Tsurugi prega uma peça nela. Ele dobra o smartphone de Yasuho em forma de sapo, que pula em sua direção, e ela é repentinamente enfeitiçada pelo Rei da Lua de Papel .
+
+Yasuho sai e volta para a cidade, seguida por Tsurugi, e descobre que não consegue mais distinguir as pessoas. Embora peça ajuda a Josuke, Tsurugi o neutraliza com seu poder. Após uma longa série de desventuras, Yasuho cede e segue Tsurugi de volta para a sala de jogos. Em outro lugar, Josuke percebe que não está mais afetado pelo Stand de Tsurugi e conclui que Yasuho era seu alvo principal.
+
+Através da fresta na porta da segunda sala subterrânea, alguém espia o retorno de Tsurugi e Yasuho.
+
+A ROCHA HUMANA
+Artigo principal: Norisuke Higashikata, Tsurugi Higashikata e Yotsuyu Yagiyama (Arco de História)
+Artigo principal: "Eu Sou uma Rocha" (Arco da História)
+Tsurugi pede desculpas, admitindo que a atacou com seu Stand, Paper Moon King. Calma, Yasuho pergunta a Tsurugi sobre o propósito do complexo subterrâneo e descobre que ele é dedicado ao tratamento da misteriosa doença que afeta os primogênitos da família Higashikata, transformando lentamente sua pele em pedra. Yasuho se lembra da condição de Holy e de que Kira tentou salvar sua mãe. Após Tsurugi sair, um homem misterioso chamado Yotsuyu Yagiyama aparece e ataca Yasuho.
+
+Enquanto isso, Josuke vê Tsurugi indo em direção ao jardim e o segue, seguido por Norisuke. Josuke então interroga Norisuke para descobrir suas intenções de uma vez por todas. Apesar do comportamento suspeito anterior, Norisuke diz que não quer fazer mal a Josuke e que tanto ele quanto Kira queriam curar a Doença da Rocha que afligia suas famílias. Norisuke, portanto, esperava aprender a cura que Kira supostamente encontrou antes de sua morte através das memórias de Josuke.
+
+
+Josuke enfrenta Yotsuyu Yagiyama, um homem que pode se transformar em pedra
+Logo, os dois homens são atacados por diversos objetos que continuam convergindo para Josuke depois que Yotsuyu, de alguma forma, se aproxima sorrateiramente dele e o toca. Josuke e Norisuke se refugiam no bunker, onde descobrem que Yotsuyu prometeu a Tsurugi uma cura em troca de entregar Josuke. Quando Josuke vê que Yasuho foi levada, ele imediatamente parte em perseguição com o Stand de Norisuke, King Nothing , que rastreia objetos e pessoas por seus cheiros. Seguindo o rastro, Norisuke revela a Josuke a Doença da Rocha, que afeta o filho mais velho de cada geração, e que um membro da família se sacrifica pelo bem da criança. King Nothing guia Josuke e Norisuke até a costa, onde encontram Yasuho inconsciente. Ao mesmo tempo, eles descobrem Yotsuyu e percebem que ele pode, de alguma forma, se transformar em uma rocha . Yotsuyu ataca novamente com latas de pesticidas, mas Josuke o agarra e pula de um penhasco para o mar. Ele então o prende em uma rede e ameaça afogá-lo se ele não responder à sua pergunta, mas Yotsuyu permanece em silêncio antes de se desfazer em pó. Ao mesmo tempo, Josuke avista uma fruta misteriosa entre os destroços, mas ela logo afunda na água.
+
+Josuke retorna à superfície com o que restou de Yotsuyu, mas ao examinar a rede cheia de pedras, ele levanta mais perguntas do que respostas. Tsurugi pergunta se ele viu a cura que Yotsuyu lhe prometeu, e Josuke menciona a fruta.
+
+O RASTRO DA FRUTA
+ENVOLVIMENTO DE JOBIN HIGASHIKATA
+Artigo principal: É como se todos os dias fossem férias de verão (Arco da história)
+Após algumas pesquisas, Norisuke revela que Yotsuyu estava se passando por outra pessoa e, na verdade, não tem identidade. Enquanto isso, Yasuho é mandada para casa. Norisuke, Josuke e Tsurugi logo encontram outra fruta junto com um cachorro que pode se transformar em pedra , e Norisuke faz o Rei Nada memorizar seu cheiro. Tsurugi adota o cachorro, que ele batiza de Iwasuke.
+
+Para investigar melhor a fruta, Norisuke leva Josuke à sua frutaria para examinar uma enciclopédia, mas são interrompidos pelo retorno de Jobin Higashikata, o primogênito de Norisuke . Jobin acaba de voltar de uma viagem ao exterior e dá a Josuke um raro besouro-veado Dorcus Titanus Palawanicus . Radiante por ver seu filho mais velho, Norisuke decide acompanhá-lo de volta para casa. Sem que ele saiba, o Rei Nada detecta o aroma da fruta misteriosa no lenço de Jobin, um fato que apenas Josuke percebe.
+
+
+Josuke desafia Jobin Higashikata para uma luta de besouros
+Josuke pede a ajuda de Tsurugi e descobre que pode atrair Jobin usando seus valiosos besouros como isca. Assim, Josuke manipula Jobin para iniciar uma luta de besouros, com Joshu como observador. Josuke planta feromônios de besouro fêmea no ringue e consegue vencer a primeira luta, mas Jobin pede uma segunda luta com seu carro como prêmio, que é o objetivo de Josuke. Durante a segunda luta, Jobin também trapaceia, revelando uma pequena parte do poder de calor de seu Speed ​​King para levar vantagem na luta de besouros, mas Josuke envenena sorrateiramente o besouro de Jobin e ganha as chaves do carro.
+
+Durante o desafio, Tsurugi recruta Yasuho e a faz entrar na Casa Higashikata . Depois que Josuke lhes envia as chaves do carro por meio de uma bolha, Yasuho e Tsurugi entram na garagem e investigam o paradeiro de Jobin com seu carro, graças ao Parque Paisley. Dessa forma, descobrem que Jobin entregou a árvore da fruta misteriosa a um homem desconhecido. Enquanto isso, Jobin começa a suspeitar de Josuke e tenta pressioná-lo para que revele suas intenções com o Rei da Velocidade; no entanto, Josuke consegue escapar, assim como Yasuho e Tsurugi.
+
+INVESTIGANDO JOBIN
+Artigo principal: Doobie Wah (Arco da História)
+
+Aisho segurando uma fruta misteriosa
+Yasuho descobre que o homem é Aisho Dainenjiyama , um segurança do estádio de beisebol de Morioh. Usando o celular de Yasuho, energizado por Paisley Park e dobrado em forma de sapo pelo Rei da Lua de Papel, a dupla testemunha Aisho realizando um acordo com um senhor idoso que milagrosamente regenera uma perna perdida. No entanto, Aisho descobre o celular. Embora o celular escape, Aisho libera seu Stand , Doobie Wah!, para perseguir Yasuho e Tsurugi. O Doobie Wah! automático se materializa a partir da respiração deles e os persegue implacavelmente.
+
+Um flashback detalha o passado de Aisho: ele morava em uma casa com sua namorada, mas quando revelou sua verdadeira natureza como um homem-rocha, ela aproveitou um de seus períodos de hibernação para vender a casa, quase o matando no processo quando ela foi demolida; Aisho foi salvo quando Yotsuyu o acordou e lamentou a perda de seu lar.
+
+No presente, Tsurugi retalia lançando um origami de carro que entra em contato com Aisho e o engana, fazendo-o confundir um ônibus com Jobin, o que causa o atropelamento e a morte de Aisho.
+
+UM VELHO CONHECIDO
+Artigo principal: Love Love Deluxe (Arco da História)
+
+Josuke conhece Karera Sakunami, uma conhecida de sua antiga identidade
+No dia seguinte, Yasuho finalmente reencontra Josuke. Eles passeiam pela praia, compartilhando um momento terno, mas outra garota repentinamente cumprimenta Josuke como "Se-chan", pedindo para se encontrarem mais tarde. Josuke vai ao encontro da garota, cujo nome é Karera Sakunami . Apesar de seu comportamento suspeito, Karera reconhece Josuke como ele era, e ele entra na brincadeira, escondendo suas memórias perdidas. Karera revela seu nome: Josefumi Kujo . Enquanto isso, dois gêmeos jogando futebol, os Irmãos A. Phex , perseguem Karera e a atacam.
+
+A natureza dos Humanos de Pedra é explicada, revelando sua coexistência secreta com a humanidade, a prevalência de Stands entre eles e as interações aparentemente amaldiçoadas que ocorrem quando se apaixonam por um humano.
+
+Segue-se uma breve luta entre Josuke e os Irmãos A. Phex. Josuke usa o gás venenoso da Chave Schott nº 2 a seu favor e faz o irmão mais velho de refém com bolhas cheias de veneno. Quando o irmão mais velho, encharcado de gasolina, é incendiado por Karera, o irmão mais novo corre em sua direção, esquecendo-se das bolhas, que estouram e o envolvem em gás venenoso. Ambos os Homens de Pedra são mortos em consequência disso. Após observar a luta, Karera finalmente percebe que Kira e Josefumi realizaram uma troca equivalente e deixa Josuke antes que ele possa lhe perguntar qualquer outra coisa.
+
+O NAMORADO DE HATO E O PASSADO DE JOSUKE
+Artigo principal: Hato trouxe seu namorado para casa (Arco da história)
+Artigo principal: Vitamina C e Killer Queen (Arco da História)
+Artigo principal: Walking Heart (Arco da História)
+Apresentamos a misteriosa árvore Locacaca , uma planta da Nova Guiné descoberta oficialmente por uma expedição australiana em 1938. Os habitantes locais usavam a Locacaca para curar diversas doenças em troca da transformação de uma parte do corpo em pedra. Durante a Segunda Guerra Mundial, todos os relatos sobre a fruta desapareceram, e ela se tornou apenas uma lenda.
+
+Enquanto Josuke descansa na Casa Higashikata e conversa com Yasuho, Hato leva seu novo namorado, Tamaki Damo , para conhecer sua família. Surpreendentemente, Damo é pouco atraente e desajeitado, resultando em um encontro constrangedor. No entanto, toda a família logo fica paralisada pela Vitamina C de Damo , que os transforma em poças de derretimento. Damo confronta Norisuke e o interroga para descobrir quem tem desmantelado sua organização . Em seguida, Damo explica o contexto de toda a situação.
+
+A tragédia da morte de Kira e Josefumi
+Há dois anos, Yoshikage Kira descobriu acidentalmente Aisho Dainenjiyama em sua forma de pedra enquanto trabalhava em um navio. Curioso, ele investigou todo o comércio e descobriu a existência da Locacaca. Por coincidência, ele encontrou um conhecido, Josefumi. Quando era menino, Josefumi foi salvo por Holy Joestar-Kira e Yoshikage, que realizaram uma cirurgia nele. Grato, Josefumi concordou em ajudar Kira a roubar alguns galhos de Aisho sem ser notado e, posteriormente, enxertá-los em outra árvore. No entanto, em 19 de agosto de 2011, Josefumi e Kira foram pegos por Damo e Yotsuyu. Kira foi mortalmente ferido, mas conseguiu colocar algumas bombas de Killer Queen perto deles, causando uma explosão. Isso permitiu que Josefumi arrastasse Kira até o esconderijo das duas frutas que eles tinham. Embora tenha afugentado os Irmãos A. Phex, Josefumi desperdiçou as frutas tentando salvar Kira, mas, percebendo a nova habilidade deles de se fundirem, decidiu se fundir com Kira na esperança de que ele sobrevivesse e colhesse novas frutas. Uma fenda se abriu e os dois homens foram soterrados.
+
+
+Kaato Higashikata retorna para sua família.
+De volta ao presente, Hato confronta Damo sobre o que ele está fazendo, mas Damo a leva para confrontar Josuke depois que Norisuke revela sua identidade. Damo quase o mata, mas é interrompido quando Josuke transporta Hato para fora da casa. Graças ao seu Coração Ambulante , Hato inflige danos severos, e Josuke consegue finalizar Damo. Ele então confirma ser a fusão de Yoshikage Kira e Josefumi Kujo .
+Entretanto, a esposa de Norisuke, Kaato Higashikata , cumpriu sua pena de prisão e está se preparando para partir. Ela entra em contato com seu filho Jobin para conspirar contra Norisuke.
+
+INTERLÚDIO E CONSEQUÊNCIAS
+Artigo principal: Milagroman (Arco da História)
+Duas semanas antes do lançamento de Kaato Higashikata, Joshu pede dinheiro ao pai para comprar produtos da idol. Após o encontro com os fãs, Joshu irrita um outro fã e rouba secretamente sua carteira, que ele esquece no caixa. Joshu se entrega a uma farra de compras e, coincidentemente, acumula cada vez mais dinheiro enquanto tenta gastá-lo. As pessoas se recusam a aceitar dinheiro dele, mencionando um misterioso Milagroman . Descobrindo que o dinheiro está literalmente grudado nele e o sobrecarregando cada vez mais, Joshu rastreia sua vítima, Zaihei Nigatake. Zaihei, grato a Joshu por ter levado sua "maldição", explica a lenda do Milagroman e sua história com a maldição. Mesmo assim, Joshu engana Zaihei, fazendo-o rasgar uma das notas amaldiçoadas e passando a maldição de volta para ele, para horror de Zaihei. No caminho para casa, Joshu pondera melancolicamente sobre seu verdadeiro valor no mundo.
+
+Josuke confirma sua segunda identidade e finalmente vê Holy Joestar-Kira pela primeira vez. No entanto, o estado dela piorou drasticamente, e Josuke fica horrorizado com a negligência da equipe do hospital. Sentindo-se apegado a ela, ele jura encontrar a cura e custear o tratamento de Holy enquanto isso.
+
+Depois, a família Higashikata percebe que sua mãe, Kaato, voltou para casa. Norisuke e Hato ficam desconfiados dela, pois sabem que ela foi presa por assassinar uma criança. O encontro é arruinado por Joshu, e Kaato sai furiosa da casa, ainda determinada a receber o que lhe é devido por proteger a família.
+
+EM BUSCA DO NOVO LOCACACA
+À PROCURA DE UM AVALIADOR DE PLANTAS
+Artigo principal: A Lagoa Azul das Dolomitas (Arco Narrativo)
+Artigo principal: O Avaliador de Plantas - Rai Mamezuku (31) (Arco da História)
+Artigo principal: Guerrilha Urbana e Doremifasolati Do (Arco Narrativo)
+Algum tempo depois, Josuke revela a condição de Holy para Norisuke, juntamente com o fato de que Jobin pode estar conspirando contra todos eles devido ao seu envolvimento na Organização de Contrabando de Locacaca . Norisuke se recusa a suspeitar de Jobin, mas instrui Josuke a procurar o avaliador de plantas de sua empresa para encontrar os galhos. Kaato ouve a conversa e informa Jobin sobre os planos dos dois. Jobin, por sua vez, procura outro Humano de Pedra chamado Dolomite , que concorda em atacar Josuke, acreditando que isso fará com que seu corpo volte ao normal, invocando seu Stand, Blue Hawaii . Blue Hawaii então controla várias pessoas consecutivamente para tentar tocar em Josuke, de modo que ele seja controlado. Apesar de seus melhores esforços, Josuke é tocado por um bebê. O Josuke controlado vai para o Santuário Mutsu-kabe, onde Dolomite o interroga sobre seus objetivos. Assim que descobre a verdade, Dolomite instrui Josuke a se afogar no lago, mas Yasuho, felizmente, intervém.
+
+
+Rai Mamezuku, o avaliador de plantas, entra em cena.
+Após Dolomite ser neutralizado e revelar o envolvimento de Jobin com a Organização Locacaca , Josuke e Yasuho vão até a casa do avaliador de plantas em um ônibus. De repente, Rai Mamezuku , o avaliador, aparece para sequestrar o ônibus. Ele conta a Josuke que um novo grupo de inimigos está se voltando contra eles e leva o casal para sua casa: um teleférico. Ele também revela Doggy Style , uma habilidade de Stand que lhe permite se desenrolar. O trio logo é atacado por uma dupla de novos inimigos: Urban Guerrilla e Doremifasolati Do. Urban é um Humano-Rocha e Doremifasolati é seu animal de estimação, que funciona como um transportador subterrâneo. Devido às suas poderosas habilidades, os dois quase matam Josuke, Mamezuku e Yasuho, mas conseguem vazar um pouco de gás dentro de Doremifasolati Do e incendiá-lo, criando uma explosão que os mata.
+
+Pouco tempo depois, Jobin se encontra com o superior de Urban, o pobre Tom . O velho humano-rocha, com aparência infantil, instrui Jobin a enterrar seu Stand , Ozon Baby, no pomar da propriedade Higashikata.
+
+INTERLÚDIO: O PASSADO DE YASUHO
+Artigo principal: O prendedor de cabelo da dinastia Qing
+Após a batalha, Mamezuku diz a Yasuho para ir para casa e ficar em segurança. No entanto, o confronto com os Humanos de Pedra a faz lembrar de um incidente do passado. Quando tinha 13 anos, Yasuho comprou um prendedor de cabelo na expectativa de um fim de semana com seu pai. Contudo, o prendedor de cabelo era uma criatura estranha que a enganou e a levou a uma tentativa de suicídio. Felizmente, a Família Kira a salvou da criatura. Desde então, Yasuho guarda os restos mortais da criatura em seu quarto.
+
+No presente, Yasuho reafirma sua vontade de ajudar diante de Mamezuku, que observa que o prendedor de cabelo pode ser um Animal de Pedra e, portanto, uma pista para identificar o inimigo.
+
+O ROUBO DO RAMO DE LOCACACA
+Artigo principal: O pobre Tom e o bebê Ozon (Arco da história)
+É hora do café da manhã na casa dos Higashikata. Jobin planta Ozon Baby sorrateiramente no pomar, mas quando retorna ao galpão de ferramentas, é confrontado por seu filho Tsurugi . Jobin o tranquiliza, dizendo que suas ações são pelo bem de sua família.
+
+No entanto, a pressão do ar aumenta e o Stand Ozon Baby aparece para atacar a todos.
+
+A Casa Higashikata está sob ataque de Ozon Baby , que manipula a pressão, e todos, exceto Jobin, desmaiaram. Presos em seu galpão, Jobin e Tsurugi, que reviveu , percebem que Ozon Baby é um Stand automático que ataca indiscriminadamente qualquer um em seu alcance. Jobin também compreende mais ou menos a habilidade do inimigo: Ozon Baby pode diminuir a pressão do ar em uma área, mas qualquer espaço fechado anula seus efeitos. Determinados, eles incendeiam o pomar usando figuras de origami e Speed ​​King para provocar seus inimigos.
+
+
+Após o ataque de Poor Tom, Jobin e Tsurugi ficam com o Ramo Locacaca.
+De fato, Poor Tom corre para o pomar para recuperar o galho enquanto Josuke e Mamezuku saem, protegidos pelas bolhas de Soft & Wet . Eles se encontram bem na hora em que Mamezuku pega o galho e uma luta começa. Poor Tom derrota Mamezuku e toma o galho, mas é envenenado por uma semente de teixo. Perseguido por Josuke, Poor Tom é enganado e desativa a habilidade de pressão do ar, mas seus supostos aliados do hospital chegam. Surpreendentemente, Poor Tom é morto por uma habilidade misteriosa que atravessa sua cabeça. Uma pessoa invisível pega o galho e foge antes que Josuke possa fazer qualquer coisa. No entanto, é revelado que Tsurugi usou Paper Moon King para enganar a todos: um galho comum foi disputado enquanto Jobin roubou o verdadeiro galho de Locacaca. Eles escondem o galho, enxertado em um cacto. Enquanto isso, o motorista da ambulância descobre o truque e deduz que a pessoa que incendiou o pomar é quem está com o galho.
+
+Finalmente, Josuke retorna a Mamezuku, que se revela vivo e se recuperando lentamente. Desesperado, Josuke só pode contemplar sua completa perda.
+
+O HOSPITAL UNIVERSITÁRIO TG
+Artigo principal: Doutor Wu e o Despertar das 3 Folhas (Arco da História)
+
+Yasuho e Mitsuba atacados por Wu Tomoki
+Após o incêndio, toda a família Higashikata se reúne, permitindo que Josuke explique sua situação e que agora tem 10 dias para recuperar a fruta. A insistência de Jobin no hospital leva Mamezuku a suspeitar da culpa do filho mais velho pelo incêndio, mas os dois decidem primeiro procurar os ocupantes da ambulância no Hospital Universitário TG .
+
+Por sua vez, Yasuho já foi ao hospital. Lá, ela encontra Mitsuba Higashikata com um médico, o Dr. Wu Tomoki , e descobre que ele também está vendendo Locacaca para Mitsuba como uma forma de "tratamento de beleza". Tomoki, que pode se transformar em pó graças à sua habilidade Doutor Wu , ataca Yasuho, mas Mitsuba intervém com seu Stand Awaking III Leaves , percebendo que não se lembra de como é tratada e está determinada a salvar seu bebê ainda não nascido de uma troca equivalente. Durante a luta, Yasuho encontra Toru , seu ex-namorado. Elas enfrentam Tomoki até descobrirem um laboratório secreto e um pomar de Locacaca. As duas mulheres quase são mortas por ele, mas são salvas no último instante por Josuke, que o mata. O único membro da Organização que resta parece ser o diretor do hospital, Satoru Akefu , de 89 anos.
+
+A CALAMIDADE ACONTECE
+Artigo principal: A Maravilha de Você (Arco da História)
+UMA PERSEGUIÇÃO PERIGOSA
+
+Josuke e seus amigos, por algum motivo, não conseguem alcançar o antigo diretor do hospital.
+Josuke, Yasuho e Mamezuku verificam o registro de entrada do laboratório e descobrem o suposto membro remanescente da Organização Locacaca : Satoru Akefu, diretor do Hospital Universitário TG. Contrariando os instintos de Yasuho, eles persistem nessa pista. Incapazes de encontrar uma foto do médico, o grupo tenta persegui-lo, mas um Stand desconhecido os impede de alcançá-lo, e Akefu acaba escapando. Além disso, o grupo tem cruzado o caminho de Toru, ex-namorado de Yasuho. Toru tenta reacender a chama entre ele e Yasuho, causando bastante ciúme e suspeita.
+
+Durante a perseguição a Akefu, Josuke é incriminado quando o pescoço de um homem quebra após uma briga com ele. Yasuho se vê sozinha, enquanto Mamezuku e Josuke precisam lidar com as consequências da morte do homem. O grupo se divide porque Mamezuku e Josuke acreditam que Akefu está com o galho, enquanto Yasuho acredita que ele está na propriedade Higashikata .
+
+
+A Doença da Rocha de Tsurugi torna-se extremamente grave.
+À medida que o novo Locacaca amadurece, Akefu parece estar sempre à espreita perto de Mitsuba , e a família Higashikata começa a sofrer uma série de infortúnios. Na escola, Tsurugi é acusado de fechar as portas de ferro da escola em um colega, e Mitsuba discute com uma das mães: Maako Kitani . Quando Maako volta para casa e reclama dos Higashikata, seu namorado, Ojiro Sasame , se lembra do Locacaca . Ele acaba conseguindo entrar na casa dos Higashikata e roubar a fruta em vaso. Jobin usa seu Speed ​​King para matar o intruso e Maako, e é repreendido por suas ações mais tarde por Norisuke , ao saber de suas mortes. As suspeitas de Mitsuba sobre os eventos em curso aumentam à medida que ela descobre as repercussões da luta pelo novo Locacaca. Em determinado momento, a Doença da Pedra de Tsurugi sai do controle, e ele fica acamado temporariamente, causando preocupação em toda a família.
+
+Enquanto isso, Josuke e Mamezuku tentam bolar seu próximo plano. Rai descobre em um jornal que Satoru Akefu estará no hospital em dois dias para dar uma palestra. Além disso, a dupla finalmente percebe que o Stand de Satoru Akefu deve desencadear má sorte assim que eles pensarem em persegui-lo. Silenciosamente, no banco de trás, o Stand se revela. Josuke tenta atacá-lo com uma sequência de socos de seu Stand, mas não consegue acertar nenhum golpe. Josuke não tem escolha a não ser se deixar ser gravemente ferido pela habilidade do Stand inimigo para ser levado ao hospital e abordar Akefu, mas Rai é ​​preso pela polícia.
+
+Ao passar um tempo com Toru , Yasuho vê uma foto de Satoru Akefu e Mitsuba Higashikata, o que sugere que eles se conhecem. Yasuho decide investigar a Casa Higashikata , ainda convicta de que o novo Locacaca está lá.
+
+O DIA DA COLHEITA
+
+Holy salva Josuke antes de perder a consciência.
+Dois dias depois, Josuke acorda no hospital. Enquanto Satoru Akefu dá uma palestra sobre seu novo medicamento, o Locacaca 6251 , Josuke tenta sair da cama, mas seu estômago é esmagado quando um policial que ele havia atordoado cai sobre ele. O poder de Satoru de provocar calamidades quase o mata, mas Josuke encontra repentinamente Holy Joestar-Kira , que o salva. Holy o leva a um laboratório secreto onde amostras do Locacaca 6251 são mantidas e o cura. Além disso, Holy revela detalhes sobre a Organização Locacaca e o aconselha a não perseguir a diretora do hospital. Ela então desmaia quando uma massa de carne petrificada atinge sua cabeça. Com sua determinação renovada, Josuke decide concluir um plano que fará Akefu vir até ele. Josuke contata um jornalista com evidências incriminatórias de testes humanos ilegais do Locacaca 6251 em Holy. O jornalista confronta Akefu sobre isso, e o diretor do hospital mata o jornalista antes de ir até Josuke. Mamezuku também escapa da prisão e chega ao Hospital Universitário TG bem a tempo de se juntar a Josuke e confrontar Satoru Akefu com ele.
+
+
+A calamidade atinge os Higashikatas, com Norisuke sendo gravemente ferido e Jobin seguindo o mesmo destino pouco depois.
+Enquanto isso, Yasuho Hirose chega à casa dos Higashikata e começa a se infiltrar na residência para encontrar o novo Locacaca , enviando Paisley Park para o celular de Joshu . Ela encontra Tsurugi Higashikata acamado , mas Jobin intercepta Paisley Park e joga o celular no vaso sanitário, ameaçando afogar Yasuho. Para piorar a situação, Mitsuba decide ficar do lado do marido e tenta ajudar Jobin a matá-la. Satoru Akefu aparece perto da casa e Yasuho perde o braço, mas seu poder de causar calamidades também alerta o resto da família Higashikata e faz o Locacaca sair de seu esconderijo. Norisuke confronta Jobin, e a discussão se intensifica até que Jobin se vê obrigado a provocar uma insolação em Norisuke, chocando toda a família. Felizmente, Joshu aproveita a confusão para salvar Paisley Park. O Stand do diretor do hospital então age e causa uma calamidade que deixa Jobin morto no corredor, e o vaso que ele havia pegado rola perto da garagem. Yasuho chama Toru para ajudar, mas, em vez disso, o "jovem" prefere se esconder e observar a situação, revelando-se, então, que ele é o inimigo.
+
+
+Josuke e Rai confrontam Wonder of U, a verdadeira forma do diretor do hospital.
+De volta ao Hospital Universitário TG, é revelado que Satoru Akefu é, na verdade, o Stand chamado Wonder of U. Wonder of U percebe que Josuke armou uma armadilha e não entra completamente no laboratório. Em vez disso, ele envia um Inseto de Pedra chamado Do Do Do, De Da Da Da contra Josuke. Do Do Do, De Da Da Da quase mata Josuke com sua manipulação de amianto, mas Rai o mata e confronta Satoru. O diretor do hospital, surpreso por Rai ter conseguido se aproximar tanto, zomba de Rai sobre a morte "azarada" de seus pais, insinuando que ele teve participação nisso. Rai fica furioso e ataca, mas é gravemente ferido pelas bolhas secretas que Josuke havia lançado sem saber, por puro azar. Mesmo assim, Rai vê alguma esperança nas bolhas de Josuke e mostra que elas têm o potencial de ativar o Spin .
+
+O SEGREDO DAS BOLHAS DE SABÃO
+Na Casa Higashikata, Joshu surge de repente com o vaso de Locacaca e declara que salvará Yasuho . Apesar das dúvidas de Yasuho, a Locacaca parece ser a única maneira de salvá-la. Yasuho explica a Joshu como funciona a Troca Equivalente , mas ele se perde em suas próprias fantasias sobre a troca e se impõe sobre uma Yasuho consternada. Ao mesmo tempo, Toru decide permitir que a troca aconteça para confirmar o poder da fruta. Ele emite alguns ruídos fracos enquanto se esconde na mata, o que faz Yasuho perceber que Toru deve ser o usuário de Stand inimigo , já que ele está perto dela desde o início da perseguição dos heróis a Satoru Akefu . Yasuho realiza uma troca equivalente com Joshu e cura seu braço. Lembrando-se de ter conhecido Toru quando criança e de tê-lo ajudado a se passar pelo verdadeiro Satoru Akefu, Yasuho confronta Toru, que permanece escondido na mata e a adverte para não o perseguir. Imperturbável, ela pega o celular de Joshu e contata Kei Nijimura , embora isso ative a habilidade de Wonder of U. Joshu enlouquece e ataca Yasuho para recuperar seu braço. Nijimura recebe o pedido de ajuda de Yasuho e começa a procurar por Josuke no laboratório Locacaca.
+
+A narração menciona de forma sinistra que uma falha em um avião nos céus de Morioh fez com que um painel da aeronave caísse em direção à cidade. Na propriedade Higashikata, Joshu tropeça e cai no chão, permitindo que Yasuho continue sua ligação. Ela explica a situação para Nijimura e a alerta sobre a habilidade de calamidade do inimigo. No laboratório, Josuke tenta atrair Wonder of U para mais perto, destruindo parcialmente o estoque de Locacaca 6251. No entanto, o poder de calamidade da diretora do hospital se volta contra ele. Apesar de seus esforços, Josuke não consegue ferir o Stand inimigo e, ironicamente, se empala nos destroços do cofre. Entretanto, Born This Way intervém repentinamente quando Nijimura entra na sala. Seu vento gélido congela as bolhas e as sopra em direção a Wonder of U, ferindo levemente a cabeça do Stand e fazendo Toru sangrar. Wonder of U, então, percebe que existe, de fato, um potencial oculto dentro das bolhas de Soft & Wet .
+
+Os ataques bem-sucedidos contra Wonder of U tiveram um custo: a bengala quebrada da equipe se alojou no olho de Nijimura. Ela desmaia, mas Josuke consegue pegar o celular dela para contatar Yasuho. Yasuho conta tudo sobre Toru para Josuke, enquanto Toru decide fazer Wonder of U recuar e sai de trás das árvores para confrontá-la. Toru pede a Yasuho que lhe entregue o Locacaca para evitar que seja destruído na calamidade iminente. Josuke tenta defendê-la, sem sucesso, e tropeça em Yasuho, o que permite que Toru pegue o Locacaca. Ao ver algo grande caindo em sua direção, Yasuho conta a Josuke, forçando-o a perseguir Wonder of U novamente. Lembrando-se das palavras de Mamezuku sobre o poder oculto em suas bolhas, Josuke dispara uma única bolha em direção a Wonder of U. De repente, uma esfera semelhante a uma bolha emerge de sua Marca de Nascença Estelar.
+
+QUEBRANDO A MALDIÇÃO
+Artigo principal: Vá Além (Arco Narrativo)
+
+Toru realizando uma troca equivalente com Tsurugi
+Josuke atira sua bolha, mas Wonder of U invoca um novo Inseto de Pedra chamado Ob-La-Di, Ob-La-Da . Ele deflete a bolha e se prende a Josuke, multiplicando-se e cobrindo seu corpo. Graças à ajuda de Paisley Park, Josuke tem outra chance de atingir o diretor do hospital, mas Ob-La-Di, Ob-La-Da entra no caminho e Josuke erra seu segundo tiro. No entanto, Paisley Park então traz a bolha invisível que emergiu da marca de nascença de Josuke de volta para a Casa Higashikata através da conexão do celular, e a bolha voa direto para Toru. Toru é atingido e Yasuho é poupada do painel. O painel cai na Casa Higashikata. Josuke consegue encontrar o chuveiro e mergulha na piscina para se livrar de Ob-La-Di, Ob-La-Da. Toru come o último Locacaca e tenta tocar Yasuho para realizar outra troca equivalente, mas Josuke atira outra bolha que o atinge, lançando-o para os fundos da garagem. De repente, Kaato Higashikata aparece em lágrimas. Kaato revela seu Stand, Space Trucking , mas não tem intenção de atacar Toru. Em vez disso, ela prende Toru usando suas cartas para imobilizar seus membros no chão. Ela então invoca Tsurugi de seu baralho e o deixa cair sobre Toru, realizando uma Troca Equivalente. Toru tenta atacar Kaato usando Wonder of U, mas Wonder of U se desintegra. Enquanto Tsurugi é curado da Doença da Rocha , Toru morre devido à troca. Infelizmente, Kaato se vê esfaqueada com uma serra na barriga e desmaia no chão.
+
+Enquanto chamam uma ambulância, Tsurugi sobe até o escritório de Norisuke e carrega o corpo dele até a garagem. Parece que a luta terminou e a maldição que havia caído sobre a Família Higashikata foi finalmente quebrada, mas Yasuho descobre que a energia da calamidade do diretor do hospital invadiu o corpo de Norisuke e está piorando seus ferimentos. Felizmente, Josuke chega e destrói a calamidade de vez com um último disparo de bolha. Josuke e Yasuho agora estão reunidos.
+
+EPÍLOGO: O INCIDENTE DA RÁDIO GAGA
+Artigo principal: O Incidente da Rádio Gaga (Arco da História)
+
+Josuke e sua família
+A história se passa em algum momento de 1941. Lucy Steel viaja dos Estados Unidos para a Cidade S, no Japão, para investigar um lugar estranho. Lá, ela conhece um garoto chamado Fumi , que decide ficar com ela depois que um ladrão rouba sua carteira. Fumi percebe para onde Lucy está indo e a alerta sobre o "Incidente da Rádio Gaga", uma lenda sobre uma garota que ouviu uma voz estranha perto de uma grade de proteção e começou a segui-la, despindo-se em seguida. Mais tarde, ela desapareceu, deixando para trás apenas suas roupas e um pé. Lucy e Fumi chegam perto do pomar da Companhia de Frutas Higashikata , onde o mesmo acontece com o motorista deles. De repente, Lucy também ouve vozes e é sugada para dentro da grade de proteção. Fumi a salva, mas começa a ser sugado também. Ele usa seu Stand para se salvar e foge com Lucy. É revelado que o verdadeiro nome de Fumi é Joseph Joestar e que ele é o pai de Holy Joestar-Kira .
+
+De volta ao presente, Josuke e Yasuho se veem sem o Locacaca para curar Holy. Eles encontram Kiyomi Kujo e descobrem que ela não se esqueceu do filho. No entanto, Josuke sente que não é nem Josefumi nem Kira e não se aproxima de Kiyomi. Josuke e Yasuho então vão até a Frutaria Higashikata. A família tenta escolher um bolo para o dia seguinte, para comemorar a alta de Norisuke do hospital, mas todos são tomados pela emoção. Assim, pedem a Josuke que escolha o bolo. Vendo que Josuke encontrou sua família, Yasuho sai da frutaria chorando de alegria.</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+</body>
+</html>
